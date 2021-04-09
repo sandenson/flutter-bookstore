@@ -42,21 +42,27 @@ class _CartState extends State<Cart> {
   Column buildScreen(List<Book> books) => Column(
         children: [
           buildSearchField(),
-          Padding(
-            padding: const EdgeInsets.only(top: 50, left: 20, right: 20),
-            child: Column(
-              children: [
-                buildCartSize(2),
-                ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: books.length,
-                  itemBuilder: (context, index) => buildBook(books[index]),
-                  scrollDirection: Axis.vertical,
+          ListView(
+            shrinkWrap: true,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(
+                    top: 30, left: 20, right: 20, bottom: 20),
+                child: Column(
+                  children: [
+                    buildCartSize(2),
+                    ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: books.length,
+                      itemBuilder: (context, index) => buildBook(books[index]),
+                      scrollDirection: Axis.vertical,
+                    ),
+                    buildTotal(books),
+                    buildCheckOutButton(),
+                  ],
                 ),
-                buildTotal(books),
-                buildCheckOutButton(),
-              ],
-            ),
+              ),
+            ],
           ),
         ],
       );

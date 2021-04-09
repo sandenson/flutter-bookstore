@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class HomePage extends StatefulWidget {
+class BookPage extends StatefulWidget {
   @override
-  _HomePageState createState() => _HomePageState();
+  _BookPageState createState() => _BookPageState();
 }
 
 class StarDisplay extends StatelessWidget {
@@ -44,7 +44,7 @@ class StarDisplay extends StatelessWidget {
   }
 }
 
-class _HomePageState extends State<HomePage> {
+class _BookPageState extends State<BookPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
