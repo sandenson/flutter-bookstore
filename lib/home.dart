@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'cart.dart';
-import 'pagina_livro.dart';
+import 'book_page.dart';
+import 'favorites.dart';
+import 'login_page.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -37,10 +39,18 @@ buildAppBar(BuildContext context) {
         ),
       ),
     ),
-    leading: Icon(
-      Icons.menu,
-      color: Colors.white,
-      size: 30,
+    leading: IconButton(
+      icon: Icon(
+        Icons.menu_rounded,
+        color: Colors.white,
+        size: 30,
+      ),
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => Login()),
+        );
+      },
     ),
     actions: [
       // ignore: missing_required_param
@@ -50,6 +60,12 @@ buildAppBar(BuildContext context) {
           color: Colors.white,
           size: 27,
         ),
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Favorite()),
+          );
+        },
       ),
       IconButton(
         icon: Icon(
@@ -136,37 +152,37 @@ buildContent(BuildContext context) {
 
 createBook(String image, String title, String author, BuildContext context) {
   return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 4),
-      child: InkWell(
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => BookPage()),
-          );
-        },
-        child: Container(
-          decoration: BoxDecoration(
-            color: Colors.white,
-          ),
-          child: Column(
-            children: [
-              Image.network(image, height: 180, fit: BoxFit.fitHeight),
-              Padding(
-                padding:
-                    EdgeInsets.all(10), // EdgeInsets.symmetric(vertical: 8),
-                child: Text(
-                  title,
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(bottom: 4),
-                child: Text(author),
-              )
-            ],
-          ),
+    padding: EdgeInsets.symmetric(horizontal: 4),
+    child: InkWell(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => BookPage()),
+        );
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
         ),
-      ));
+        child: Column(
+          children: [
+            Image.network(image, height: 180, fit: BoxFit.fitHeight),
+            Padding(
+              padding: EdgeInsets.all(10), // EdgeInsets.symmetric(vertical: 8),
+              child: Text(
+                title,
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 4),
+              child: Text(author),
+            )
+          ],
+        ),
+      ),
+    ),
+  );
 }
 
 buildRowMaisVendidos(BuildContext context) {
