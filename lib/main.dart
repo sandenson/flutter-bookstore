@@ -6,6 +6,7 @@ import 'home.dart';
 void main() {
   runApp(
     MaterialApp(
+      title: 'Flutter Library',
       home: HomePage(),
       debugShowCheckedModeBanner: false,
     ),

@@ -45,20 +45,8 @@ class Login extends StatelessWidget {
         color: Colors.white,
         child: ListView(
           children: <Widget>[
-            TextFormField(
-              keyboardType: TextInputType.text,
-              decoration: InputDecoration(
-                labelText: "Que livro você procura?",
-                labelStyle: TextStyle(
-                  color: Colors.grey.shade300,
-                  fontWeight: FontWeight.w400,
-                  fontSize: 20,
-                ),
-              ),
-              style: TextStyle(fontSize: 20),
-            ),
             SizedBox(
-              height: 60,
+              height: 50,
             ),
             Text("Para continuar, faça login",
                 style: TextStyle(
@@ -100,34 +88,47 @@ class _FormPageState extends State<FormPage> {
           child: Column(
             children: <Widget>[
               TextFormField(
-                  validator: (value) {
-                    if (value.isEmpty) return "Campo vazio";
-                    if (!value.contains('@')) return "Email não valido";
-                    if (!value.contains('.com')) return "Email não valido";
-                    return null;
-                  },
-                  keyboardType: TextInputType.emailAddress,
-                  decoration: InputDecoration(
-                    labelText: "E-mail",
-                    labelStyle: TextStyle(
+                validator: (value) {
+                  if (value.isEmpty) return "Campo vazio";
+                  if (!value.contains('@')) return "Email não válido";
+                  if (!value.contains('.com')) return "Email não válido";
+                  return null;
+                },
+                keyboardType: TextInputType.emailAddress,
+                decoration: InputDecoration(
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
                       color: Color(0xFF00bdb1),
-                      fontWeight: FontWeight.w400,
-                      fontSize: 20,
+                      width: 2.0,
                     ),
                   ),
-                  style: TextStyle(fontSize: 20)),
+                  labelText: "E-mail",
+                  labelStyle: TextStyle(
+                    color: Color(0xFF00bdb1),
+                    fontWeight: FontWeight.w400,
+                    fontSize: 20,
+                  ),
+                ),
+                style: TextStyle(fontSize: 20),
+              ),
               SizedBox(
                 height: 10,
               ),
               TextFormField(
                 validator: (value) {
                   if (value.isEmpty) return "Campo vazio";
-                  if (value.length < 8) return "Minimo de 8 caracteres";
+                  if (value.length < 8) return "Mínimo de 8 caracteres";
                   return null;
                 },
                 keyboardType: TextInputType.text,
                 obscureText: true,
                 decoration: InputDecoration(
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0xFF00bdb1),
+                      width: 2.0,
+                    ),
+                  ),
                   labelText: "Senha",
                   labelStyle: TextStyle(
                     color: Color(0xFF00bdb1),
