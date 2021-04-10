@@ -66,67 +66,6 @@ class Login extends StatelessWidget {
                   fontSize: 25,
                 )),
             FormPage(),
-
-            // Column(
-            //   children: [
-            //     TextFormField(
-            //         keyboardType: TextInputType.emailAddress,
-            //         decoration: InputDecoration(
-            //           labelText: "E-mail",
-            //           labelStyle: TextStyle(
-            //             color: Color(0xFF00bdb1),
-            //             fontWeight: FontWeight.w400,
-            //             fontSize: 20,
-            //           ),
-            //         ),
-            //         style: TextStyle(fontSize: 20)),
-            //     SizedBox(
-            //       height: 10,
-            //     ),
-            //     TextFormField(
-            //       keyboardType: TextInputType.text,
-            //       obscureText: true,
-            //       decoration: InputDecoration(
-            //         labelText: "Senha",
-            //         labelStyle: TextStyle(
-            //           color: Color(0xFF00bdb1),
-            //           fontWeight: FontWeight.w400,
-            //           fontSize: 20,
-            //         ),
-            //       ),
-            //       style: TextStyle(fontSize: 20),
-            //     ),
-            //   ],
-            // ),
-            SizedBox(
-              height: 10,
-            ),
-            Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Text(
-                    'Esqueceu sua senha?',
-                    style: TextStyle(
-                      fontSize: 11,
-                      color: Colors.grey.shade500,
-                    ),
-                  ),
-                  TextButton(
-                    style: ButtonStyle(
-                        backgroundColor:
-                            MaterialStateProperty.all<Color>(Colors.red),
-                        textStyle: MaterialStateProperty.all<TextStyle>(
-                          TextStyle(color: Colors.white),
-                        ),
-                        minimumSize:
-                            MaterialStateProperty.all<Size>(Size(40, 40))),
-                    onPressed: () {},
-                    child: Text(
-                      'ENTRAR',
-                      style: TextStyle(color: Colors.white, fontSize: 15),
-                    ),
-                  ),
-                ]),
             Container(
               color: Colors.grey.shade200,
               height: 60,
@@ -197,6 +136,31 @@ class _FormPageState extends State<FormPage> {
                   ),
                 ),
                 style: TextStyle(fontSize: 20),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Text(
+                      'Esqueceu sua senha?',
+                      style: TextStyle(
+                        fontSize: 11,
+                        color: Colors.grey.shade500,
+                      ),
+                    ),
+                  ]),
+              ElevatedButton(
+                child: Text("ENTRAR"),
+                onPressed: () {
+                  if (_formKey.currentState.validate()) {
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      content: Text("Logging in..."),
+                      duration: Duration(seconds: 3),
+                    ));
+                  }
+                },
               ),
             ],
           ),
