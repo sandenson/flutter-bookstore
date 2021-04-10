@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'cart.dart';
+import 'favorites.dart';
 
 class BookPage extends StatefulWidget {
   @override
@@ -88,7 +90,7 @@ class _BookPageState extends State<BookPage> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "Preço: " +
+                "Preço: R\$ " +
                     price.toString().replaceFirst(
                         RegExp('.'), ',', price.toString().length - 3),
                 style: TextStyle(
@@ -252,9 +254,14 @@ class _BookPageState extends State<BookPage> {
 
   buildAppBar() {
     return AppBar(
-      leading: Icon(
-        Icons.menu_rounded,
-        size: 40,
+      leading: IconButton(
+        icon: Icon(
+          Icons.arrow_back_rounded,
+          size: 30,
+        ),
+        onPressed: () {
+          Navigator.pop(context);
+        },
       ),
       backgroundColor: Color(0xFF00bdb1),
       title: Align(
@@ -265,15 +272,32 @@ class _BookPageState extends State<BookPage> {
         ),
       ),
       actions: [
-        Container(
-          child: Icon(Icons.favorite_outline_rounded, size: 30),
-          width: 50,
+        IconButton(
+          icon: Icon(
+            Icons.favorite_outline_rounded,
+            color: Colors.white,
+            size: 27,
+          ),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Favorite()),
+            );
+          },
         ),
-        Container(
-          color: Colors.brown[500],
-          child: Icon(Icons.shopping_cart, size: 30),
-          width: 50,
-        )
+        IconButton(
+          icon: Icon(
+            Icons.shopping_cart,
+            color: Colors.white,
+            size: 27,
+          ),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Cart()),
+            );
+          },
+        ),
       ],
     );
   }
@@ -308,6 +332,7 @@ class _BookPageState extends State<BookPage> {
           ),
         ),
         ListView.builder(
+          physics: NeverScrollableScrollPhysics(),
           shrinkWrap: true,
           itemCount: reviews.length,
           itemBuilder: (context, i) {
@@ -324,6 +349,7 @@ class _BookPageState extends State<BookPage> {
       padding: EdgeInsets.symmetric(vertical: 8),
       child: ListView(
         shrinkWrap: true,
+        physics: NeverScrollableScrollPhysics(),
         children: [
           Flexible(
             child: Row(
@@ -422,7 +448,7 @@ const List<Review> reviews = const <Review>[
   const Review(
     title: "Muito bom",
     text:
-        "Basicamente um show de direção e roteiro. Eu louvo mais o Nisio Isin pelos diálogos absurdos e construção de personagens maravilhosa.",
+        "Um show de roteiro. Eu louvo demais o Nisio Isin pelos diálogos absurdos e construção de personagens maravilhosa.",
     username: "AlexandreEsteves",
     rating: 4.5,
     date: "22/03/2021",

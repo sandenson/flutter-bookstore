@@ -2,8 +2,8 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bookstore/book.dart';
-// import 'package:flutter_application_1/book.dart';
 import 'package:intl/intl.dart';
+import 'favorites.dart';
 
 class Cart extends StatefulWidget {
   @override
@@ -257,14 +257,26 @@ class _CartState extends State<Cart> {
     return AppBar(
       backgroundColor: Color(0xFF00bdb1),
       actions: [
-        Icon(Icons.favorite_border),
-        Container(
-          margin: EdgeInsets.only(left: 16),
-          color: Colors.brown[600],
-          child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16),
-              child: Icon(Icons.shopping_cart_rounded)),
-        )
+        IconButton(
+          icon: Icon(
+            Icons.favorite_outline_rounded,
+            color: Colors.white,
+            size: 27,
+          ),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Favorite()),
+            );
+          },
+        ),
+        IconButton(
+          icon: Icon(
+            Icons.shopping_cart_rounded,
+            color: Colors.white,
+            size: 27,
+          ),
+        ),
       ],
       centerTitle: true,
       title: Text(
