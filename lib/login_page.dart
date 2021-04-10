@@ -60,66 +60,68 @@ class Login extends StatelessWidget {
                   color: Colors.grey.shade700,
                   fontSize: 25,
                 )),
-            TextFormField(
-                keyboardType: TextInputType.emailAddress,
-                decoration: InputDecoration(
-                  labelText: "E-mail",
-                  labelStyle: TextStyle(
-                    color: Color(0xFF00bdb1),
-                    fontWeight: FontWeight.w400,
-                    fontSize: 20,
+            FormPage(),
+
+            // Column(
+            //   children: [
+            //     TextFormField(
+            //         keyboardType: TextInputType.emailAddress,
+            //         decoration: InputDecoration(
+            //           labelText: "E-mail",
+            //           labelStyle: TextStyle(
+            //             color: Color(0xFF00bdb1),
+            //             fontWeight: FontWeight.w400,
+            //             fontSize: 20,
+            //           ),
+            //         ),
+            //         style: TextStyle(fontSize: 20)),
+            //     SizedBox(
+            //       height: 10,
+            //     ),
+            //     TextFormField(
+            //       keyboardType: TextInputType.text,
+            //       obscureText: true,
+            //       decoration: InputDecoration(
+            //         labelText: "Senha",
+            //         labelStyle: TextStyle(
+            //           color: Color(0xFF00bdb1),
+            //           fontWeight: FontWeight.w400,
+            //           fontSize: 20,
+            //         ),
+            //       ),
+            //       style: TextStyle(fontSize: 20),
+            //     ),
+            //   ],
+            // ),
+            SizedBox(
+              height: 10,
+            ),
+            Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Text(
+                    'Esqueceu sua senha?',
+                    style: TextStyle(
+                      fontSize: 11,
+                      color: Colors.grey.shade500,
+                    ),
                   ),
-                ),
-                style: TextStyle(fontSize: 20)),
-            SizedBox(
-              height: 10,
-            ),
-            TextFormField(
-              keyboardType: TextInputType.text,
-              obscureText: true,
-              decoration: InputDecoration(
-                labelText: "Senha",
-                labelStyle: TextStyle(
-                  color: Color(0xFF00bdb1),
-                  fontWeight: FontWeight.w400,
-                  fontSize: 20,
-                ),
-              ),
-              style: TextStyle(fontSize: 20),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Column(
-              children: [
-                Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Text(
-                        'Esqueceu sua senha?',
-                        style: TextStyle(
-                          fontSize: 11,
-                          color: Colors.grey.shade500,
+                  TextButton(
+                    style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all<Color>(Colors.red),
+                        textStyle: MaterialStateProperty.all<TextStyle>(
+                          TextStyle(color: Colors.white),
                         ),
-                      ),
-                      TextButton(
-                        style: ButtonStyle(
-                            backgroundColor:
-                                MaterialStateProperty.all<Color>(Colors.red),
-                            textStyle: MaterialStateProperty.all<TextStyle>(
-                              TextStyle(color: Colors.white),
-                            ),
-                            minimumSize:
-                                MaterialStateProperty.all<Size>(Size(40, 40))),
-                        onPressed: () => {},
-                        child: Text(
-                          'ENTRAR',
-                          style: TextStyle(color: Colors.white, fontSize: 15),
-                        ),
-                      ),
-                    ]),
-              ],
-            ),
+                        minimumSize:
+                            MaterialStateProperty.all<Size>(Size(40, 40))),
+                    onPressed: () {},
+                    child: Text(
+                      'ENTRAR',
+                      style: TextStyle(color: Colors.white, fontSize: 15),
+                    ),
+                  ),
+                ]),
             Container(
               color: Colors.grey.shade200,
               height: 60,
@@ -135,5 +137,64 @@ class Login extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class FormPage extends StatefulWidget {
+  @override
+  _FormPageState createState() => _FormPageState();
+}
+
+class _FormPageState extends State<FormPage> {
+  final _formKey = GlobalKey<FormState>();
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Form(
+          key: _formKey,
+          child: Column(
+            children: <Widget>[
+              TextFormField(
+                  validator: (value) {
+                    if (value.isEmpty) return "Campo vazio";
+                    if (!value.contains('@')) return "Email não valido";
+                    if (!value.contains('.com')) return "Email não valido";
+                    return null;
+                  },
+                  keyboardType: TextInputType.emailAddress,
+                  decoration: InputDecoration(
+                    labelText: "E-mail",
+                    labelStyle: TextStyle(
+                      color: Color(0xFF00bdb1),
+                      fontWeight: FontWeight.w400,
+                      fontSize: 20,
+                    ),
+                  ),
+                  style: TextStyle(fontSize: 20)),
+              SizedBox(
+                height: 10,
+              ),
+              TextFormField(
+                validator: (value) {
+                  if (value.isEmpty) return "Campo vazio";
+                  if (value.length < 8) return "Minimo de 8 caracteres";
+                  return null;
+                },
+                keyboardType: TextInputType.text,
+                obscureText: true,
+                decoration: InputDecoration(
+                  labelText: "Senha",
+                  labelStyle: TextStyle(
+                    color: Color(0xFF00bdb1),
+                    fontWeight: FontWeight.w400,
+                    fontSize: 20,
+                  ),
+                ),
+                style: TextStyle(fontSize: 20),
+              ),
+            ],
+          ),
+        ));
   }
 }
