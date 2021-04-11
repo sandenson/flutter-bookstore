@@ -51,6 +51,7 @@ class _FavoriteState extends State<Favorite> {
       ),
       actions: [
         IconButton(
+          onPressed: () {},
           icon: Icon(
             Icons.favorite_border,
             color: Colors.white,

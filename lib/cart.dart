@@ -271,6 +271,7 @@ class _CartState extends State<Cart> {
           },
         ),
         IconButton(
+          onPressed: () {},
           icon: Icon(
             Icons.shopping_cart_rounded,
             color: Colors.white,
