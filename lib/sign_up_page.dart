@@ -141,7 +141,34 @@ class _FormPageState extends State<FormPage> {
               SizedBox(
                 height: 10,
               ),
-             /* Row(
+              TextFormField(
+                validator: (value) {
+                  if (value.isEmpty) return "Campo vazio";
+                  if (value.length < 10) return "Mínimo de 10 caracteres";
+                  return null;
+                },
+                keyboardType: TextInputType.text,
+                obscureText: true,
+                decoration: InputDecoration(
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0xFF00bdb1),
+                      width: 2.0,
+                    ),
+                  ),
+                  labelText: "Nome",
+                  labelStyle: TextStyle(
+                    color: Color(0xFF00bdb1),
+                    fontWeight: FontWeight.w400,
+                    fontSize: 20,
+                  ),
+                ),
+                style: TextStyle(fontSize: 20),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              /* Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     Text(
@@ -165,8 +192,7 @@ class _FormPageState extends State<FormPage> {
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.resolveWith<Color>(
                     (Set<MaterialState> states) {
-                      if (states.contains(MaterialState.pressed))
-                        return Colors.red[900];
+                      if (states.contains(MaterialState.pressed)) return Colors.red[900];
                       return Colors.red[800];
                     },
                   ),
