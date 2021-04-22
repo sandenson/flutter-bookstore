@@ -16,7 +16,7 @@ class Login extends StatelessWidget {
           },
         ),
         title: Text(
-          'Login',
+          'Sign up',
           style: TextStyle(color: Colors.white),
         ),
         actions: [
@@ -48,13 +48,13 @@ class Login extends StatelessWidget {
             SizedBox(
               height: 50,
             ),
-            Text("Para continuar, faça login",
+            Text("Para continuar, faça cadastro",
                 style: TextStyle(
                   color: Colors.grey.shade700,
                   fontSize: 25,
                 )),
             FormPage(),
-            Container(
+            /*Container(
               color: Colors.grey.shade200,
               height: 60,
               child: Column(
@@ -64,7 +64,7 @@ class Login extends StatelessWidget {
                   Text('Crie sua conta e economize tempo na proxima compra'),
                 ],
               ),
-            )
+            )*/
           ],
         ),
       ),
@@ -141,7 +141,7 @@ class _FormPageState extends State<FormPage> {
               SizedBox(
                 height: 10,
               ),
-              Row(
+             /* Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     Text(
@@ -151,13 +151,13 @@ class _FormPageState extends State<FormPage> {
                         color: Colors.grey.shade500,
                       ),
                     ),
-                  ]),
+                  ]),*/
               ElevatedButton(
-                child: Text("ENTRAR"),
+                child: Text("CADASTRAR"),
                 onPressed: () {
                   if (_formKey.currentState.validate()) {
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                      content: Text("Logging in..."),
+                      content: Text("Signing up..."),
                       duration: Duration(seconds: 3),
                     ));
                   }
