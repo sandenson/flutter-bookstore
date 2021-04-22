@@ -90,6 +90,33 @@ class _FormPageState extends State<FormPage> {
               TextFormField(
                 validator: (value) {
                   if (value.isEmpty) return "Campo vazio";
+                  if (value.length < 10) return "Mínimo de 10 caracteres";
+                  return null;
+                },
+                keyboardType: TextInputType.text,
+                obscureText: true,
+                decoration: InputDecoration(
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0xFF00bdb1),
+                      width: 2.0,
+                    ),
+                  ),
+                  labelText: "Nome",
+                  labelStyle: TextStyle(
+                    color: Color(0xFF00bdb1),
+                    fontWeight: FontWeight.w400,
+                    fontSize: 20,
+                  ),
+                ),
+                style: TextStyle(fontSize: 20),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              TextFormField(
+                validator: (value) {
+                  if (value.isEmpty) return "Campo vazio";
                   if (!value.contains('@')) return "Email não válido";
                   if (!value.contains('.com')) return "Email não válido";
                   return null;
@@ -130,33 +157,6 @@ class _FormPageState extends State<FormPage> {
                     ),
                   ),
                   labelText: "Senha",
-                  labelStyle: TextStyle(
-                    color: Color(0xFF00bdb1),
-                    fontWeight: FontWeight.w400,
-                    fontSize: 20,
-                  ),
-                ),
-                style: TextStyle(fontSize: 20),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              TextFormField(
-                validator: (value) {
-                  if (value.isEmpty) return "Campo vazio";
-                  if (value.length < 10) return "Mínimo de 10 caracteres";
-                  return null;
-                },
-                keyboardType: TextInputType.text,
-                obscureText: true,
-                decoration: InputDecoration(
-                  focusedBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Color(0xFF00bdb1),
-                      width: 2.0,
-                    ),
-                  ),
-                  labelText: "Nome",
                   labelStyle: TextStyle(
                     color: Color(0xFF00bdb1),
                     fontWeight: FontWeight.w400,
