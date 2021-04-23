@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bookstore/book/book_page.dart';
-import 'package:flutter_bookstore/favorites/temporary_models/simple_book_model.dart';
+import 'package:flutter_bookstore/models/temporary/simple_book_model.dart';
 
-class FavoriteBookWidget extends StatelessWidget {
+class BookCardWidget extends StatelessWidget {
   final SimpleBookModel book;
   final BuildContext appContext;
 
-  const FavoriteBookWidget({
+  const BookCardWidget({
     Key? key,
     required this.book,
     required this.appContext,
@@ -14,7 +14,7 @@ class FavoriteBookWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return Container(
       padding: EdgeInsets.symmetric(horizontal: 4),
       child: InkWell(
         onTap: () {
@@ -31,8 +31,7 @@ class FavoriteBookWidget extends StatelessWidget {
             children: [
               Image.network(book.image, height: 180, fit: BoxFit.fitHeight),
               Padding(
-                padding:
-                    EdgeInsets.all(10), // EdgeInsets.symmetric(vertical: 8),
+                padding: EdgeInsets.all(10),
                 child: Text(
                   book.title,
                   style: TextStyle(fontWeight: FontWeight.bold),

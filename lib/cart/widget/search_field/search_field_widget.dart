@@ -6,33 +6,31 @@ class SearchFieldWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 10),
       decoration: BoxDecoration(
         border: Border(
           bottom:
               BorderSide(style: BorderStyle.solid, color: Color(0xFF00bdb1)),
         ),
       ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
-        child: Row(
-          children: [
-            Expanded(
-              child: TextField(
-                decoration: InputDecoration(
-                  enabledBorder: InputBorder.none,
-                  disabledBorder: InputBorder.none,
-                  focusedBorder: InputBorder.none,
-                  labelText: 'Que livro você procura?',
-                  labelStyle: TextStyle(color: Colors.grey),
-                ),
+      child: Row(
+        children: [
+          Expanded(
+            child: TextField(
+              decoration: InputDecoration(
+                enabledBorder: InputBorder.none,
+                disabledBorder: InputBorder.none,
+                focusedBorder: InputBorder.none,
+                labelText: 'Que livro você procura?',
+                labelStyle: TextStyle(color: Colors.grey),
               ),
             ),
-            Icon(
-              Icons.search,
-              size: 30,
-            ),
-          ],
-        ),
+          ),
+          Icon(
+            Icons.search,
+            size: 30,
+          ),
+        ],
       ),
     );
   }

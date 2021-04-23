@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bookstore/favorites/favorite_book/favorite_book_widget.dart';
-import 'package:flutter_bookstore/favorites/temporary_models/simple_book_model.dart';
+import 'package:flutter_bookstore/models/temporary/simple_book_model.dart';
+import 'package:flutter_bookstore/shared/widgets/book_card/book_card_widget.dart';
 
 class GridContainerWidget extends StatelessWidget {
   final List<SimpleBookModel> books;
@@ -20,23 +20,23 @@ class GridContainerWidget extends StatelessWidget {
         shrinkWrap: true,
         scrollDirection: Axis.horizontal,
         children: [
-          FavoriteBookWidget(
+          BookCardWidget(
             book: books[0],
             appContext: appContext,
           ),
-          FavoriteBookWidget(
+          BookCardWidget(
             book: books[1],
             appContext: appContext,
           ),
-          FavoriteBookWidget(
+          BookCardWidget(
             book: books[2],
             appContext: appContext,
           ),
-          FavoriteBookWidget(
+          BookCardWidget(
             book: books[3],
             appContext: appContext,
           ),
-          FavoriteBookWidget(
+          BookCardWidget(
             book: books[4],
             appContext: appContext,
           ),

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import '../cart/cart.dart';
-import '../book/book_page.dart';
-import '../favorites/favorites.dart';
-import '../login/login_page.dart';
+import 'package:flutter_bookstore/book/book_page.dart';
+import 'package:flutter_bookstore/cart/cart.dart';
+import 'package:flutter_bookstore/favorites/favorites.dart';
 import '../menu_drawer.dart';
 
 class HomePage extends StatefulWidget {
@@ -65,7 +64,7 @@ buildAppBar(BuildContext context) {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => Favorite()),
+            MaterialPageRoute(builder: (context) => FavoritesPage()),
           );
         },
       ),
@@ -78,7 +77,7 @@ buildAppBar(BuildContext context) {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => Cart()),
+            MaterialPageRoute(builder: (context) => CartPage()),
           );
         },
       ),
@@ -153,7 +152,7 @@ buildContent(BuildContext context) {
 }
 
 createBook(String image, String title, String author, BuildContext context) {
-  return Padding(
+  return Container(
     padding: EdgeInsets.symmetric(horizontal: 4),
     child: InkWell(
       onTap: () {
@@ -170,7 +169,7 @@ createBook(String image, String title, String author, BuildContext context) {
           children: [
             Image.network(image, height: 180, fit: BoxFit.fitHeight),
             Padding(
-              padding: EdgeInsets.all(10), // EdgeInsets.symmetric(vertical: 8),
+              padding: EdgeInsets.all(10),
               child: Text(
                 title,
                 style: TextStyle(fontWeight: FontWeight.bold),

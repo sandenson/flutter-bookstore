@@ -2,14 +2,14 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bookstore/cart/widget/cart/cart_widget.dart';
-import '../favorites/favorites.dart';
+import 'package:flutter_bookstore/favorites/favorites.dart';
 
-class Cart extends StatefulWidget {
+class CartPage extends StatefulWidget {
   @override
-  _CartState createState() => _CartState();
+  _CartPageState createState() => _CartPageState();
 }
 
-class _CartState extends State<Cart> {
+class _CartPageState extends State<CartPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +33,7 @@ class _CartState extends State<Cart> {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => Favorite()),
+              MaterialPageRoute(builder: (context) => FavoritesPage()),
             );
           },
         ),
