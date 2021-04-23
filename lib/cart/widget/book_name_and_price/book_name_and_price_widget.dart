@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 class BookNameAndPriceWidget extends StatelessWidget {
   final String title;
@@ -9,14 +8,7 @@ class BookNameAndPriceWidget extends StatelessWidget {
     Key? key,
     required this.title,
     required this.price,
-    this.formatter = NumberFormat.currency(
-      locale: 'pt-br',
-      name: '',
-      symbol: 'R\$',
-    ),
   }) : super(key: key);
-
-  final NumberFormat formatter;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +23,7 @@ class BookNameAndPriceWidget extends StatelessWidget {
           Row(
             children: [
               Text(
-                formatter.format(price),
+                "R\$ ${price.toStringAsFixed(2)}",
                 style: TextStyle(fontWeight: FontWeight.w500),
               ),
               SizedBox(
