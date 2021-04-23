@@ -89,9 +89,9 @@ class _FormPageState extends State<FormPage> {
             children: <Widget>[
               TextFormField(
                 validator: (value) {
-                  if (value.isEmpty) return "Campo vazio";
-                  if (!value.contains('@')) return "Email não válido";
-                  if (!value.contains('.com')) return "Email não válido";
+                  if (value!.isEmpty) return "Campo vazio";
+                  if (value.contains('@')) return "Email não válido";
+                  if (value.contains('.com')) return "Email não válido";
                   return null;
                 },
                 keyboardType: TextInputType.emailAddress,
@@ -116,7 +116,7 @@ class _FormPageState extends State<FormPage> {
               ),
               TextFormField(
                 validator: (value) {
-                  if (value.isEmpty) return "Campo vazio";
+                  if (value!.isEmpty) return "Campo vazio";
                   if (value.length < 8) return "Mínimo de 8 caracteres";
                   return null;
                 },
@@ -155,7 +155,7 @@ class _FormPageState extends State<FormPage> {
               ElevatedButton(
                 child: Text("ENTRAR"),
                 onPressed: () {
-                  if (_formKey.currentState.validate()) {
+                  if (_formKey.currentState!.validate()) {
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                       content: Text("Logging in..."),
                       duration: Duration(seconds: 3),

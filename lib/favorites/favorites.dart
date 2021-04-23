@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'book_page.dart';
-import 'cart.dart';
+import '../book/book_page.dart';
+import '../cart/cart.dart';
 
 class Favorite extends StatefulWidget {
   @override
@@ -212,7 +212,11 @@ class _FavoriteState extends State<Favorite> {
 }
 
 class SimpleBook {
-  const SimpleBook({this.title, this.image, this.author});
+  const SimpleBook({
+    required this.title,
+    required this.image,
+    required this.author,
+  });
 
   final String title;
   final String image;

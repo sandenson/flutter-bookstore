@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'cart.dart';
-import 'book_page.dart';
-import 'favorites.dart';
-import 'login_page.dart';
+import '../cart/cart.dart';
+import '../book/book_page.dart';
+import '../favorites/favorites.dart';
+import '../login/login_page.dart';
 
 class HomePage extends StatefulWidget {
   @override

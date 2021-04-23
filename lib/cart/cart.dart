@@ -1,9 +1,11 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_bookstore/book.dart';
+import 'package:flutter_bookstore/cart/widget/cart_size/cart_size_widget.dart';
+import 'package:flutter_bookstore/cart/widget/search_field/search_field_widget.dart';
+import 'package:flutter_bookstore/models/book_model.dart';
 import 'package:intl/intl.dart';
-import 'favorites.dart';
+import '../favorites/favorites.dart';
 
 class Cart extends StatefulWidget {
   @override
@@ -13,21 +15,19 @@ class Cart extends StatefulWidget {
 class _CartState extends State<Cart> {
   @override
   Widget build(BuildContext context) {
-    List<Book> books = [
-      new Book(
+    List<BookModel> books = [
+      new BookModel(
         title: 'A Arte da Guerra',
         author: 'Sun Tzu',
         price: 7.99,
         year: 2012,
-        weight: '250g',
         language: 'Português',
       ),
-      new Book(
+      new BookModel(
         title: 'Dom Quixote - Livro Primeiro',
         author: 'Miguel de Cervantes',
         price: 10,
         year: 205,
-        weight: '390g',
         language: 'Inglês',
       ),
     ];
@@ -39,9 +39,9 @@ class _CartState extends State<Cart> {
     );
   }
 
-  Column buildScreen(List<Book> books) => Column(
+  Column buildScreen(List<BookModel> books) => Column(
         children: [
-          buildSearchField(),
+          SearchFieldWidget(),
           ListView(
             shrinkWrap: true,
             children: [
@@ -50,7 +50,7 @@ class _CartState extends State<Cart> {
                     top: 30, left: 20, right: 20, bottom: 20),
                 child: Column(
                   children: [
-                    buildCartSize(2),
+                    CartSizeWidget(cartSize: 2),
                     ListView.builder(
                       shrinkWrap: true,
                       itemCount: books.length,
@@ -92,7 +92,7 @@ class _CartState extends State<Cart> {
     );
   }
 
-  Container buildTotal(List<Book> books) {
+  Container buildTotal(List<BookModel> books) {
     NumberFormat formatter = NumberFormat.currency(
       locale: 'pt-br',
       name: '',
@@ -106,7 +106,7 @@ class _CartState extends State<Cart> {
         border: Border.all(
           style: BorderStyle.solid,
           width: 1,
-          color: Colors.grey[300],
+          color: Colors.grey[300]!,
         ),
       ),
       child: Row(
@@ -125,14 +125,14 @@ class _CartState extends State<Cart> {
     );
   }
 
-  Container buildBook(Book book) {
+  Container buildBook(BookModel book) {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
       decoration: BoxDecoration(
         border: Border.all(
           style: BorderStyle.solid,
           width: 1,
-          color: Colors.grey[300],
+          color: Colors.grey[300]!,
         ),
       ),
       child: Flex(
@@ -154,11 +154,6 @@ class _CartState extends State<Cart> {
           ),
           SizedBox(height: 8),
           Text(
-            'Peso: ${book.weight}',
-            style: TextStyle(fontWeight: FontWeight.w500),
-          ),
-          SizedBox(height: 8),
-          Text(
             'Idioma: ${book.language}',
             style: TextStyle(fontWeight: FontWeight.w500),
           ),
@@ -175,82 +170,7 @@ class _CartState extends State<Cart> {
       symbol: 'R\$',
     );
 
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(
-          title,
-          style: TextStyle(fontWeight: FontWeight.w500),
-        ),
-        Row(
-          children: [
-            Text(
-              formatter.format(price),
-              style: TextStyle(fontWeight: FontWeight.w500),
-            ),
-            SizedBox(
-              width: 5,
-            ),
-            Icon(
-              Icons.highlight_remove_outlined,
-              color: Colors.grey,
-              size: 27,
-            ),
-          ],
-        ),
-      ],
-    );
-  }
-
-  Container buildCartSize(int cartSize) {
-    return Container(
-      margin: EdgeInsetsDirectional.only(bottom: 30),
-      child: Row(
-        children: [
-          Text(
-            'Carrinho ($cartSize item' + (cartSize != 1 ? 's' : '') + ')',
-            style: TextStyle(
-              fontSize: 30,
-              fontWeight: FontWeight.w300,
-            ),
-            textAlign: TextAlign.start,
-          ),
-        ],
-      ),
-    );
-  }
-
-  Container buildSearchField() {
-    return Container(
-      decoration: BoxDecoration(
-        border: Border(
-          bottom:
-              BorderSide(style: BorderStyle.solid, color: Color(0xFF00bdb1)),
-        ),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
-        child: Row(
-          children: [
-            Expanded(
-              child: TextField(
-                decoration: InputDecoration(
-                  enabledBorder: InputBorder.none,
-                  disabledBorder: InputBorder.none,
-                  focusedBorder: InputBorder.none,
-                  labelText: 'Que livro você procura?',
-                  labelStyle: TextStyle(color: Colors.grey),
-                ),
-              ),
-            ),
-            Icon(
-              Icons.search,
-              size: 30,
-            ),
-          ],
-        ),
-      ),
-    );
+    return;
   }
 
   AppBar buildAppBar() {
