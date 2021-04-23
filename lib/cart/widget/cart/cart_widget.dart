@@ -17,15 +17,22 @@ class CartWidget extends StatefulWidget {
 
 List<BookModel> books = [
   new BookModel(
+    imageUrl: "https://avatars.githubusercontent.com/u/29125169?v=4",
     title: 'A Arte da Guerra',
     author: 'Sun Tzu',
+    description: "Aquele livro lá de estratégia e tal.",
+    type: "Livro",
     price: 7.99,
     year: 2012,
     language: 'Português',
   ),
   new BookModel(
+    imageUrl: "https://avatars.githubusercontent.com/u/29125169?v=4",
     title: 'Dom Quixote - Livro Primeiro',
     author: 'Miguel de Cervantes',
+    description:
+        "Aquele livro lá do fidalgo louco e seu escudeiro Sancho Pança.",
+    type: "Livro",
     price: 10,
     year: 205,
     language: 'Inglês',
