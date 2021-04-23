@@ -1,4 +1,4 @@
-# pagina_livro
+# flutter_bookstore
 
 A new Flutter project.
 

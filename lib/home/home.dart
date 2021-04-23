@@ -3,6 +3,7 @@ import '../cart/cart.dart';
 import '../book/book_page.dart';
 import '../favorites/favorites.dart';
 import '../login/login_page.dart';
+import '../menu_drawer.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -15,6 +16,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: buildAppBar(context),
       body: buildContent(context),
+      drawer: MenuDrawer(),
     );
   }
 }
@@ -39,19 +41,19 @@ buildAppBar(BuildContext context) {
         ),
       ),
     ),
-    leading: IconButton(
-      icon: Icon(
-        Icons.menu_rounded,
-        color: Colors.white,
-        size: 30,
-      ),
-      onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => Login()),
-        );
-      },
-    ),
+    // leading: IconButton(
+    //   icon: Icon(
+    //     Icons.menu_rounded,
+    //     color: Colors.white,
+    //     size: 30,
+    //   ),
+    //   onPressed: () {
+    //     Navigator.push(
+    //       context,
+    //       MaterialPageRoute(builder: (context) => Login()),
+    //     );
+    //   },
+    // ),
     actions: [
       // ignore: missing_required_param
       IconButton(

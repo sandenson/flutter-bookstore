@@ -162,6 +162,15 @@ class _FormPageState extends State<FormPage> {
                     ));
                   }
                 },
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.resolveWith<Color>(
+                    (Set<MaterialState> states) {
+                      if (states.contains(MaterialState.pressed))
+                        return Colors.red[900];
+                      return Colors.red[800];
+                    },
+                  ),
+                ),
               ),
             ],
           ),
