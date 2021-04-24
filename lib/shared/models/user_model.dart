@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 class UserModel {
   final String name, email, password;
 
@@ -6,4 +8,13 @@ class UserModel {
     required this.email,
     required this.password,
   });
+
+  Map<String, dynamic> toMap() {
+    return {
+      "email": email,
+      "name": name,
+    };
+  }
+
+  String toJson() => json.encode(toMap());
 }

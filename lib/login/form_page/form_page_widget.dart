@@ -1,4 +1,8 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bookstore/shared/models/user_model.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class FormPageWidget extends StatefulWidget {
   @override
@@ -84,11 +88,24 @@ class _FormPageWidgetState extends State<FormPageWidget> {
             ElevatedButton(
               child: Text("ENTRAR"),
               onPressed: () {
+                final userModel = new UserModel(
+                    email: 'giorno@giovanna.com',
+                    name: 'Giogio',
+                    password: '123456789');
+
+                String userModelParsed = userModel.toJson();
+
                 if (_formKey.currentState!.validate()) {
                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                     content: Text("Logging in..."),
                     duration: Duration(seconds: 3),
                   ));
+
+                  addStringToSF() async {
+                    SharedPreferences prefs =
+                        await SharedPreferences.getInstance();
+                    prefs.setString('user', userModelParsed);
+                  }
                 }
               },
               style: ButtonStyle(
