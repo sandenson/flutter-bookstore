@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bookstore/models/review_model.dart';
+import 'package:flutter_bookstore/shared/models/review_model.dart';
 import 'package:flutter_bookstore/shared/widgets/star_display/star_display_widget.dart';
 
 class ReviewWidget extends StatelessWidget {

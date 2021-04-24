@@ -20,13 +20,6 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-buildText(text, {double fontSize = 13}) {
-  return Text(
-    text,
-    style: TextStyle(color: Colors.black, fontSize: fontSize),
-  );
-}
-
 buildAppBar(BuildContext context) {
   return AppBar(
     backgroundColor: Colors.teal[300],

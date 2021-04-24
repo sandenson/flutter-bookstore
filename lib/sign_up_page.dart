@@ -89,7 +89,7 @@ class _FormPageState extends State<FormPage> {
             children: <Widget>[
               TextFormField(
                 validator: (value) {
-                  if (value.isEmpty) return "Campo vazio";
+                  if (value!.isEmpty) return "Campo vazio";
                   if (value.length < 10) return "Mínimo de 10 caracteres";
                   return null;
                 },
@@ -116,9 +116,9 @@ class _FormPageState extends State<FormPage> {
               ),
               TextFormField(
                 validator: (value) {
-                  if (value.isEmpty) return "Campo vazio";
-                  if (!value.contains('@')) return "Email não válido";
-                  if (!value.contains('.com')) return "Email não válido";
+                  if (value!.isEmpty) return "Campo vazio";
+                  if (value.contains('@')) return "Email não válido";
+                  if (value.contains('.com')) return "Email não válido";
                   return null;
                 },
                 keyboardType: TextInputType.emailAddress,
@@ -143,7 +143,7 @@ class _FormPageState extends State<FormPage> {
               ),
               TextFormField(
                 validator: (value) {
-                  if (value.isEmpty) return "Campo vazio";
+                  if (value!.isEmpty) return "Campo vazio";
                   if (value.length < 8) return "Mínimo de 8 caracteres";
                   return null;
                 },
@@ -182,7 +182,7 @@ class _FormPageState extends State<FormPage> {
               ElevatedButton(
                 child: Text("CADASTRAR"),
                 onPressed: () {
-                  if (_formKey.currentState.validate()) {
+                  if (_formKey.currentState!.validate()) {
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                       content: Text("Signing up..."),
                       duration: Duration(seconds: 3),
@@ -192,8 +192,9 @@ class _FormPageState extends State<FormPage> {
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.resolveWith<Color>(
                     (Set<MaterialState> states) {
-                      if (states.contains(MaterialState.pressed)) return Colors.red[900];
-                      return Colors.red[800];
+                      if (states.contains(MaterialState.pressed))
+                        return Colors.red[900]!;
+                      return Colors.red[800]!;
                     },
                   ),
                 ),

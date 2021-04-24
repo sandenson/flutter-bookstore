@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bookstore/book/widgets/review/review_widget.dart';
-import 'package:flutter_bookstore/models/review_model.dart';
+import 'package:flutter_bookstore/shared/models/review_model.dart';
 
 class ReviewsListWidget extends StatelessWidget {
   const ReviewsListWidget({Key? key}) : super(key: key);
