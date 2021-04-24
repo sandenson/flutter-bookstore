@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bookstore/book/book_page.dart';
 import 'package:flutter_bookstore/cart/cart.dart';
 import 'package:flutter_bookstore/favorites/favorites.dart';
+import 'package:flutter_bookstore/home/widgets/books_on_sale_row/books_on_sale_widget.dart';
+import 'package:flutter_bookstore/home/widgets/home_search_bar/home_search_bar_widget.dart';
+import 'package:flutter_bookstore/home/widgets/most_sold_books_row/most_sold_books_row_widget.dart';
+import 'package:flutter_bookstore/models/temporary/simple_book_model.dart';
 import '../menu_drawer.dart';
 
 class HomePage extends StatefulWidget {
@@ -90,26 +94,7 @@ buildContent(BuildContext context) {
   return ListView(
     shrinkWrap: true,
     children: [
-      Container(
-        color: Colors.teal[300],
-        padding: EdgeInsets.all(16),
-        child: TextField(
-          decoration: InputDecoration(
-            enabledBorder: InputBorder.none,
-            disabledBorder: InputBorder.none,
-            focusedBorder: InputBorder.none,
-            filled: true,
-            fillColor: Colors.white,
-            suffixIcon: IconTheme(
-                data: IconThemeData(color: Colors.deepOrange[800]),
-                child: Icon(
-                  Icons.search,
-                  size: 30,
-                )),
-            hintText: "Que livro você procura?",
-          ),
-        ),
-      ),
+      HomeSearchBarWidget(),
       Container(
         color: Colors.teal,
         padding: EdgeInsets.all(16),
@@ -133,7 +118,10 @@ buildContent(BuildContext context) {
             ),
           ),
           SizedBox(height: 8),
-          buildRowMaisVendidos(context),
+          MostSoldBooksWidgets(
+            booksList: mostSoldBooksList,
+            appContext: context,
+          ),
           Text(
             'Ofertas da semana do Consumidor: Novas ofertas todos os dias',
             style: TextStyle(
@@ -144,118 +132,84 @@ buildContent(BuildContext context) {
             ),
           ),
           SizedBox(height: 8),
-          buildRowOfertas(context),
+          BooksOnSaleWidget(
+            booksList: booksOnSaleList,
+            appContext: context,
+          ),
         ]),
       ),
     ],
   );
 }
 
-createBook(String image, String title, String author, BuildContext context) {
-  return Container(
-    padding: EdgeInsets.symmetric(horizontal: 4),
-    child: InkWell(
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => BookPage()),
-        );
-      },
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.white,
-        ),
-        child: Column(
-          children: [
-            Image.network(image, height: 180, fit: BoxFit.fitHeight),
-            Padding(
-              padding: EdgeInsets.all(10),
-              child: Text(
-                title,
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(bottom: 4),
-              child: Text(author),
-            )
-          ],
-        ),
-      ),
-    ),
-  );
-}
+final List<SimpleBookModel> mostSoldBooksList = const <SimpleBookModel>[
+  SimpleBookModel(
+    image: 'https://images-na.ssl-images-amazon.com/images/I/812ot79TCsL.jpg',
+    title: 'Capitães da Areia',
+    author: 'Jorge Amado',
+  ),
+  SimpleBookModel(
+    image: 'https://m.media-amazon.com/images/I/51amKTwzkPL.jpg',
+    title: 'O Morro dos Ventos Uivantes',
+    author: 'Emily Brontë',
+  ),
+  SimpleBookModel(
+    image:
+        'http://lojasaraiva.vteximg.com.br/arquivos/ids/12054945/1002909425.jpg?v=637141927089070000',
+    title: 'O Pequeno Príncipe',
+    author: 'Antoine de Saint-Exupéry',
+  ),
+  SimpleBookModel(
+    image:
+        'https://a-static.mlcdn.com.br/618x463/o-diario-de-anne-frank-livro-edicao-de-luxo-capa-dura-spmix/spmixshop/6246607661/1ff2dbc6ca5728ceabbf260532d92cca.jpg',
+    title: 'O Diário de Anne Frank',
+    author: 'Anne Frank',
+  ),
+  SimpleBookModel(
+    image: 'https://m.media-amazon.com/images/I/51XULadddlL.jpg',
+    title: 'Dom Quixote de La Mancha',
+    author: 'Miguel de Cervantes',
+  ),
+  SimpleBookModel(
+    image: 'https://f.i.uol.com.br/fotografia/2017/08/11/703323-400x600-1.jpeg',
+    title: 'Harry Potter e o Enigma do Princípe',
+    author: 'JK. Rowling',
+  ),
+];
 
-buildRowMaisVendidos(BuildContext context) {
-  //livros + vendidos na row1
-  return Container(
-    height: 250,
-    child: ListView(
-      shrinkWrap: true,
-      scrollDirection: Axis.horizontal,
-      children: [
-        createBook(
-            'https://images-na.ssl-images-amazon.com/images/I/812ot79TCsL.jpg',
-            'Capitães da Areia',
-            'Jorge Amado',
-            context),
-        createBook('https://m.media-amazon.com/images/I/51amKTwzkPL.jpg',
-            'O Morro dos Ventos Uivantes', 'Emily Brontë', context),
-        createBook(
-            'http://lojasaraiva.vteximg.com.br/arquivos/ids/12054945/1002909425.jpg?v=637141927089070000',
-            'O Pequeno Príncipe',
-            'Antoine de Saint-Exupéry',
-            context),
-        createBook(
-            'https://a-static.mlcdn.com.br/618x463/o-diario-de-anne-frank-livro-edicao-de-luxo-capa-dura-spmix/spmixshop/6246607661/1ff2dbc6ca5728ceabbf260532d92cca.jpg',
-            'O Diário de Anne Frank',
-            'Anne Frank',
-            context),
-        createBook('https://m.media-amazon.com/images/I/51XULadddlL.jpg',
-            'Dom Quixote de La Mancha', 'Miguel de Cervantes', context),
-        createBook(
-            'https://f.i.uol.com.br/fotografia/2017/08/11/703323-400x600-1.jpeg',
-            'Harry Potter e o Enigma do Princípe',
-            'JK. Rowling',
-            context),
-      ],
-    ),
-  );
-}
-
-buildRowOfertas(BuildContext context) {
-  //livros em oferta na row2
-  return Container(
-    height: 250,
-    child: ListView(
-      shrinkWrap: true,
-      scrollDirection: Axis.horizontal,
-      children: [
-        createBook('https://m.media-amazon.com/images/I/91rtArfzScL.jpg',
-            'Alice no País das Maravilhas', 'Lewis Carrol', context),
-        createBook(
-            'https://www.tamiresdecarvalho.com/wp-content/uploads/2019/03/91XO-9O58dL.jpg',
-            'Coleção: Grandes Obras',
-            'Jane Austen',
-            context),
-        createBook(
-            'https://images.tcdn.com.br/img/img_prod/617642/a_arte_da_guerra_sun_tzu_10163_1_20190719172751.png',
-            'A Arte da Guerra',
-            'Sun Tzu',
-            context),
-        createBook(
-            'https://d19qz1cqidnnhq.cloudfront.net/imagens/capas/e46ef4365583e6c89069b2d90eb2683a627fc2d1.jpg',
-            'Quincas Borba',
-            'Machado de Asis',
-            context),
-        createBook('http://i.imgur.com/MbNcr6s.jpg', 'Joyland', 'Stephen King',
-            context),
-        createBook(
-            'https://i.pinimg.com/originals/61/de/b2/61deb298947cebaaee1751b710413085.jpg',
-            'Senhora',
-            'José de Alencar',
-            context),
-      ],
-    ),
-  );
-}
+final List<SimpleBookModel> booksOnSaleList = const <SimpleBookModel>[
+  SimpleBookModel(
+    image: 'https://m.media-amazon.com/images/I/91rtArfzScL.jpg',
+    title: 'Alice no País das Maravilhas',
+    author: 'Lewis Carrol',
+  ),
+  SimpleBookModel(
+    image:
+        'https://www.tamiresdecarvalho.com/wp-content/uploads/2019/03/91XO-9O58dL.jpg',
+    title: 'Coleção: Grandes Obras',
+    author: 'Jane Austen',
+  ),
+  SimpleBookModel(
+    image:
+        'https://images.tcdn.com.br/img/img_prod/617642/a_arte_da_guerra_sun_tzu_10163_1_20190719172751.png',
+    title: 'A Arte da Guerra',
+    author: 'Sun Tzu',
+  ),
+  SimpleBookModel(
+    image:
+        'https://d19qz1cqidnnhq.cloudfront.net/imagens/capas/e46ef4365583e6c89069b2d90eb2683a627fc2d1.jpg',
+    title: 'Quincas Borba',
+    author: 'Machado de Asis',
+  ),
+  SimpleBookModel(
+    image: 'http://i.imgur.com/MbNcr6s.jpg',
+    title: 'Joyland',
+    author: 'Stephen King',
+  ),
+  SimpleBookModel(
+    image:
+        'https://i.pinimg.com/originals/61/de/b2/61deb298947cebaaee1751b710413085.jpg',
+    title: 'Senhora',
+    author: 'José de Alencar',
+  ),
+];

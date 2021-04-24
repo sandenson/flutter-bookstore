@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bookstore/cart/widget/book_cart_info/book_cart_info_widget.dart';
-import 'package:flutter_bookstore/cart/widget/cart_size/cart_size_widget.dart';
-import 'package:flutter_bookstore/cart/widget/checkout_out_button/check_out_button_widget.dart';
-import 'package:flutter_bookstore/cart/widget/search_field/search_field_widget.dart';
-import 'package:flutter_bookstore/cart/widget/total/total_widget.dart';
+import 'package:flutter_bookstore/cart/widgets/book_cart_info/book_cart_info_widget.dart';
+import 'package:flutter_bookstore/cart/widgets/cart_size/cart_size_widget.dart';
+import 'package:flutter_bookstore/cart/widgets/checkout_out_button/check_out_button_widget.dart';
+import 'package:flutter_bookstore/cart/widgets/search_field/search_field_widget.dart';
+import 'package:flutter_bookstore/cart/widgets/total/total_widget.dart';
 import 'package:flutter_bookstore/models/book_model.dart';
 
 class CartWidget extends StatefulWidget {

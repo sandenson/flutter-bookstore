@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bookstore/favorites/book_page_header/book_page_header_widget.dart';
-import 'package:flutter_bookstore/favorites/grid_container/grid_container_widget.dart';
+import 'package:flutter_bookstore/favorites/widgets/book_page_header/book_page_header_widget.dart';
+import 'package:flutter_bookstore/favorites/widgets/grid_container/grid_container_widget.dart';
 import 'package:flutter_bookstore/models/temporary/simple_book_model.dart';
 
 class FavoritesPageWidget extends StatefulWidget {

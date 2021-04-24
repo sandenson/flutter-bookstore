@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_bookstore/cart/widget/cart/cart_widget.dart';
+import 'package:flutter_bookstore/cart/widgets/cart/cart_widget.dart';
 import 'package:flutter_bookstore/favorites/favorites.dart';
 
 class CartPage extends StatefulWidget {

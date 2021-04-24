@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bookstore/cart/cart.dart';
-import 'package:flutter_bookstore/favorites/favorites_page/favorites_page_widget.dart';
+import 'package:flutter_bookstore/favorites/widgets/favorites_page/favorites_page_widget.dart';
 
 class FavoritesPage extends StatefulWidget {
   @override
