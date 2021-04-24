@@ -1,4 +1,4 @@
-import 'package:flutter_bookstore/models/review_model.dart';
+import 'package:flutter_bookstore/shared/models/review_model.dart';
 
 class BookModel {
   final String imageUrl, title, author, language, type, description;

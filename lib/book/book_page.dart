@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bookstore/book/widgets/book_page/book_page_widget.dart';
 import 'package:flutter_bookstore/cart/cart.dart';
 import 'package:flutter_bookstore/favorites/favorites.dart';
-import 'package:flutter_bookstore/models/book_model.dart';
+import 'package:flutter_bookstore/shared/models/book_model.dart';
 
 class BookPage extends StatefulWidget {
   @override

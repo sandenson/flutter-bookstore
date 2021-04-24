@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bookstore/book/widgets/book_info/book_info_widget.dart';
 import 'package:flutter_bookstore/book/widgets/buttons_row/buttons_row_widget.dart';
 import 'package:flutter_bookstore/book/widgets/reviews_list/reviews_list_widget.dart';
-import 'package:flutter_bookstore/models/book_model.dart';
+import 'package:flutter_bookstore/shared/models/book_model.dart';
 
 class BookPageWidget extends StatefulWidget {
   final BookModel book;

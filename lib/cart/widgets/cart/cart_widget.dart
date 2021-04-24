@@ -4,7 +4,7 @@ import 'package:flutter_bookstore/cart/widgets/cart_size/cart_size_widget.dart';
 import 'package:flutter_bookstore/cart/widgets/checkout_out_button/check_out_button_widget.dart';
 import 'package:flutter_bookstore/cart/widgets/search_field/search_field_widget.dart';
 import 'package:flutter_bookstore/cart/widgets/total/total_widget.dart';
-import 'package:flutter_bookstore/models/book_model.dart';
+import 'package:flutter_bookstore/shared/models/book_model.dart';
 
 class CartWidget extends StatefulWidget {
   CartWidget({

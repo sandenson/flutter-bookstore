@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bookstore/cart/widgets/book_name_and_price/book_name_and_price_widget.dart';
-import 'package:flutter_bookstore/models/book_model.dart';
+import 'package:flutter_bookstore/shared/models/book_model.dart';
 
 class BookCartInfoWidget extends StatelessWidget {
   final BookModel book;

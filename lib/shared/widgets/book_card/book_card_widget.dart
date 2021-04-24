@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bookstore/book/book_page.dart';
-import 'package:flutter_bookstore/models/temporary/simple_book_model.dart';
+import 'package:flutter_bookstore/shared/models/temporary/simple_book_model.dart';
 
 class BookCardWidget extends StatelessWidget {
   final SimpleBookModel book;

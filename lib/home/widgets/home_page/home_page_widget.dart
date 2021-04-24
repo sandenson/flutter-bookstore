@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bookstore/home/widgets/books_on_sale_row/books_on_sale_widget.dart';
 import 'package:flutter_bookstore/home/widgets/home_search_bar/home_search_bar_widget.dart';
 import 'package:flutter_bookstore/home/widgets/most_sold_books_row/most_sold_books_row_widget.dart';
-import 'package:flutter_bookstore/models/temporary/simple_book_model.dart';
+import 'package:flutter_bookstore/shared/models/temporary/simple_book_model.dart';
 
 class HomePageWidget extends StatefulWidget {
   final BuildContext appContext;

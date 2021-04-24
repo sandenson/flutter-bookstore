@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bookstore/models/book_model.dart';
+import 'package:flutter_bookstore/shared/models/book_model.dart';
 
 class TotalWidget extends StatelessWidget {
   final List<BookModel> books;
