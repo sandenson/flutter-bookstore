@@ -40,7 +40,7 @@ class BookCardWidget extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(bottom: 4),
                 child: Text(book.author),
-              )
+              ),
             ],
           ),
         ),

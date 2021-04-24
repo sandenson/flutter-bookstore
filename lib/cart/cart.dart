@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_bookstore/cart/widgets/cart/cart_widget.dart';
 import 'package:flutter_bookstore/favorites/favorites.dart';
+import 'package:flutter_bookstore/shared/widgets/app_bar/app_bar_widget.dart';
 
 class CartPage extends StatefulWidget {
   @override
@@ -13,7 +14,7 @@ class _CartPageState extends State<CartPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(),
+      appBar: AppBarWidget(cart: true, appContext: context),
       body: SafeArea(
         child: CartWidget(),
       ),

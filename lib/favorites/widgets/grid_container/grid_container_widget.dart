@@ -15,32 +15,15 @@ class GridContainerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: EdgeInsets.all(10),
       height: 250,
-      child: ListView(
+      child: ListView.builder(
         shrinkWrap: true,
         scrollDirection: Axis.horizontal,
-        children: [
-          BookCardWidget(
-            book: books[0],
-            appContext: appContext,
-          ),
-          BookCardWidget(
-            book: books[1],
-            appContext: appContext,
-          ),
-          BookCardWidget(
-            book: books[2],
-            appContext: appContext,
-          ),
-          BookCardWidget(
-            book: books[3],
-            appContext: appContext,
-          ),
-          BookCardWidget(
-            book: books[4],
-            appContext: appContext,
-          ),
-        ],
+        itemCount: books.length,
+        itemBuilder: (context, i) {
+          return BookCardWidget(book: books[i], appContext: appContext);
+        },
       ),
     );
   }

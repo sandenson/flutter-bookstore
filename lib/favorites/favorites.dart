@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bookstore/cart/cart.dart';
 import 'package:flutter_bookstore/favorites/widgets/favorites_page/favorites_page_widget.dart';
+import 'package:flutter_bookstore/shared/widgets/app_bar/app_bar_widget.dart';
 
 class FavoritesPage extends StatefulWidget {
   @override
@@ -11,7 +12,10 @@ class _FavoritesPageState extends State<FavoritesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(),
+      appBar: AppBarWidget(
+        favorites: true,
+        appContext: context,
+      ),
       body: FavoritesPageWidget(appContext: context),
     );
   }

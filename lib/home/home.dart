@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bookstore/cart/cart.dart';
 import 'package:flutter_bookstore/favorites/favorites.dart';
 import 'package:flutter_bookstore/home/widgets/home_page/home_page_widget.dart';
+import 'package:flutter_bookstore/shared/widgets/app_bar/app_bar_widget.dart';
 import '../shared/widgets/menu_drawer/menu_drawer_widget.dart';
 
 class HomePage extends StatefulWidget {
@@ -13,7 +14,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(context),
+      appBar: AppBarWidget(home: true, appContext: context),
       body: HomePageWidget(appContext: context),
       drawer: MenuDrawer(),
     );
@@ -33,19 +34,6 @@ buildAppBar(BuildContext context) {
         ),
       ),
     ),
-    // leading: IconButton(
-    //   icon: Icon(
-    //     Icons.menu_rounded,
-    //     color: Colors.white,
-    //     size: 30,
-    //   ),
-    //   onPressed: () {
-    //     Navigator.push(
-    //       context,
-    //       MaterialPageRoute(builder: (context) => Login()),
-    //     );
-    //   },
-    // ),
     actions: [
       // ignore: missing_required_param
       IconButton(
