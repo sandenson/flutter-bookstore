@@ -15,7 +15,7 @@ class GridContainerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(10),
+      padding: EdgeInsets.symmetric(horizontal: 10),
       height: 250,
       child: ListView.builder(
         shrinkWrap: true,
