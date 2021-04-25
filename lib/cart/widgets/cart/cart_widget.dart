@@ -29,12 +29,15 @@ class CartWidget extends StatelessWidget {
                 child: Column(
                   children: [
                     CartSizeWidget(cartSize: booksList.length),
-                    ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: booksList.length,
-                      itemBuilder: (context, index) =>
-                          BookCartInfoWidget(book: booksList[index]),
-                      scrollDirection: Axis.vertical,
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height / 2.5,
+                      child: ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: booksList.length,
+                        itemBuilder: (context, index) =>
+                            BookCartInfoWidget(book: booksList[index]),
+                        scrollDirection: Axis.vertical,
+                      ),
                     ),
                     TotalWidget(books: booksList),
                     CheckOutButtonWidget(),
