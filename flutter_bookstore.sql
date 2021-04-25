@@ -41,8 +41,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `nome`, `email`, `senha`) VALUES
-(1, 'carlaino', 'carlaino.santos@gmail.com', '86'),
-(2, 'sandes', 'sandes@gmail.com', '1234567');
+(1, 'carlaino', 'carlaino.santos@gmail.com', '86868686'),
+(2, 'sandes', 'sandes@gmail.com', '12345678');
 
 --
 -- Índices para tabelas despejadas
