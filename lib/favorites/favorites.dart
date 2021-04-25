@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bookstore/cart/cart.dart';
+import 'package:flutter_bookstore/data/all_books_api.dart';
 import 'package:flutter_bookstore/favorites/widgets/favorites_page/favorites_page_widget.dart';
+import 'package:flutter_bookstore/shared/models/book_model.dart';
 import 'package:flutter_bookstore/shared/widgets/app_bar/app_bar_widget.dart';
 
 class FavoritesPage extends StatefulWidget {
@@ -9,6 +10,16 @@ class FavoritesPage extends StatefulWidget {
 }
 
 class _FavoritesPageState extends State<FavoritesPage> {
+  late Future<List<BookModel>> booksList;
+
+  @override
+  void initState() {
+    super.initState();
+    booksList = BooksApi().getBooks();
+
+    booksList.then((value) => print(value[0]));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,51 +27,20 @@ class _FavoritesPageState extends State<FavoritesPage> {
         favorites: true,
         appContext: context,
       ),
-      body: FavoritesPageWidget(appContext: context),
-    );
-  }
+      body: FutureBuilder<List<BookModel>>(
+        future: booksList,
+        builder: (context, snapshot) {
+          if (snapshot.hasError) {
+            return Center(child: Text('Ocorreu um erro inesperado'));
+          }
 
-  buildAppBar() {
-    return AppBar(
-      leading: IconButton(
-        icon: Icon(
-          Icons.arrow_back_rounded,
-          size: 30,
-        ),
-        onPressed: () {
-          Navigator.pop(context);
+          if (snapshot.hasData) {
+            return FavoritesPageWidget(
+                booksList: snapshot.data!, appContext: context);
+          } else {
+            return Center(child: CircularProgressIndicator());
+          }
         },
-      ),
-      actions: [
-        IconButton(
-          onPressed: () {},
-          icon: Icon(
-            Icons.favorite_border,
-            color: Colors.white,
-            size: 27,
-          ),
-        ),
-        IconButton(
-          icon: Icon(
-            Icons.shopping_cart,
-            color: Colors.white,
-            size: 27,
-          ),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => CartPage()),
-            );
-          },
-        ),
-      ],
-      backgroundColor: Color(0xFF00bdb1),
-      title: Align(
-        alignment: Alignment.center,
-        child: Text(
-          'Biblionline',
-          style: TextStyle(color: Colors.white),
-        ),
       ),
     );
   }
