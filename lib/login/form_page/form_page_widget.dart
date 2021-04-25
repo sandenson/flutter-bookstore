@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bookstore/shared/data/user_dao.dart';
 import 'package:flutter_bookstore/shared/models/user_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -91,7 +92,11 @@ class _FormPageWidgetState extends State<FormPageWidget> {
             ),
             ElevatedButton(
               child: Text("ENTRAR"),
-              onPressed: () {
+              onPressed: () async {
+                List<UserModel> users = await UsersDao().loadUsers();
+
+                users.forEach((user) {});
+
                 final userModel = new UserModel(
                     email: 'giorno@giovanna.com',
                     name: 'Giogio',

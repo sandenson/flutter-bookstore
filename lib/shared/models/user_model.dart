@@ -1,9 +1,9 @@
 import 'dart:convert';
 
 class UserModel {
-  final String name;
-  final String email;
-  final String password;
+  late String name;
+  late String email;
+  late String password;
 
   UserModel({
     required this.name,
@@ -21,14 +21,9 @@ class UserModel {
 
   String toJson() => json.encode(toMap());
 
-  factory UserModel.fromMap(Map<String, dynamic> map) {
-    return UserModel(
-      name: map['name'],
-      email: map['email'],
-      password: map['password'],
-    );
+  UserModel.fromJson(Map<String, dynamic> map) {
+    name = map['name'];
+    email = map['email'];
+    password = map['password'];
   }
-
-  factory UserModel.fromJson(dynamic source) =>
-      UserModel.fromMap(json.decode(source));
 }
