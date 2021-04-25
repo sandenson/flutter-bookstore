@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bookstore/cart/cart.dart';
 import 'package:flutter_bookstore/favorites/favorites.dart';
 import 'package:flutter_bookstore/home/widgets/home_page/home_page_widget.dart';
+import 'package:flutter_bookstore/shared/models/book_model.dart';
 import 'package:flutter_bookstore/shared/widgets/app_bar/app_bar_widget.dart';
 import '../shared/widgets/menu_drawer/menu_drawer_widget.dart';
+import 'package:flutter_bookstore/data/book_api.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -11,6 +13,16 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  late Future<List<BookModel>> listaBooks;
+
+  @override
+  void initState() {
+    super.initState();
+    listaBooks = BookApi().carregarBooks();
+
+    print(listaBooks);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -1,10 +1,10 @@
 import 'package:flutter_bookstore/shared/models/review_model.dart';
 
 class BookModel {
-  final String imageUrl, title, author, language, type, description;
-  final double price;
-  final int year;
-  final List<ReviewModel>? reviews;
+  late String imageUrl, title, author, language, type, description;
+  late double price;
+  late int year;
+  late List<ReviewModel>? reviews;
 
   BookModel({
     required this.imageUrl,
@@ -17,4 +17,16 @@ class BookModel {
     required this.language,
     this.reviews,
   });
+
+  BookModel.fromJson(Map<String, dynamic> json) {
+    imageUrl = json['imageUrl'];
+    title = json['title'];
+    author = json['author'];
+    description = json['description'];
+    type = json['type'];
+    price = json['price'];
+    year = json['year'];
+    language = json['language'];
+    reviews = json['reviews'];
+  }
 }
