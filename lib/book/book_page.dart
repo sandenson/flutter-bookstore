@@ -3,6 +3,7 @@ import 'package:flutter_bookstore/book/widgets/book_page/book_page_widget.dart';
 import 'package:flutter_bookstore/cart/cart.dart';
 import 'package:flutter_bookstore/favorites/favorites.dart';
 import 'package:flutter_bookstore/shared/models/book_model.dart';
+import 'package:flutter_bookstore/shared/widgets/app_bar/app_bar_widget.dart';
 
 class BookPage extends StatefulWidget {
   @override
@@ -26,62 +27,14 @@ class _BookPageState extends State<BookPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(),
+      appBar: AppBarWidget(
+        appContext: context,
+      ),
       body: BookPageWidget(
         book: book,
         rating: 4.48,
         nRatings: 8001,
       ),
-    );
-  }
-
-  buildAppBar() {
-    return AppBar(
-      leading: IconButton(
-        icon: Icon(
-          Icons.arrow_back_rounded,
-          size: 30,
-        ),
-        onPressed: () {
-          Navigator.pop(context);
-        },
-      ),
-      backgroundColor: Color(0xFF00bdb1),
-      title: Align(
-        alignment: Alignment.center,
-        child: Text(
-          'BibliOnline',
-          style: TextStyle(color: Colors.white),
-        ),
-      ),
-      actions: [
-        IconButton(
-          icon: Icon(
-            Icons.favorite_outline_rounded,
-            color: Colors.white,
-            size: 27,
-          ),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => FavoritesPage()),
-            );
-          },
-        ),
-        IconButton(
-          icon: Icon(
-            Icons.shopping_cart,
-            color: Colors.white,
-            size: 27,
-          ),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => CartPage()),
-            );
-          },
-        ),
-      ],
     );
   }
 }
