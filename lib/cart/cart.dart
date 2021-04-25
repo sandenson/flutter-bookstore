@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bookstore/cart/widgets/cart/cart_widget.dart';
-import 'package:flutter_bookstore/data/all_books_api.dart';
+import 'package:flutter_bookstore/shared/data/all_books_api.dart';
 import 'package:flutter_bookstore/shared/models/book_model.dart';
 import 'package:flutter_bookstore/shared/widgets/app_bar/app_bar_widget.dart';
 
@@ -15,7 +15,7 @@ class _CartPageState extends State<CartPage> {
   @override
   void initState() {
     super.initState();
-    booksList = BooksApi().getBooks();
+    booksList = BooksApi().getBooksByList("cart");
   }
 
   @override

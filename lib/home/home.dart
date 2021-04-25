@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bookstore/home/widgets/home_page/home_page_widget.dart';
-import 'package:flutter_bookstore/shared/models/book_model.dart';
+import 'package:flutter_bookstore/shared/data/all_books_api.dart';
 import 'package:flutter_bookstore/shared/widgets/app_bar/app_bar_widget.dart';
 import '../shared/widgets/menu_drawer/menu_drawer_widget.dart';
-import 'package:flutter_bookstore/data/all_books_api.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -11,27 +10,27 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  late Future<List<BookModel>> booksList;
+  late Future<HomePageStateModel> state;
 
   @override
   void initState() {
     super.initState();
-    booksList = BooksApi().getBooks();
+    state = BooksApi().getHomeBooks();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBarWidget(home: true, appContext: context),
-      body: FutureBuilder<List<BookModel>>(
-        future: booksList,
+      body: FutureBuilder<HomePageStateModel>(
+        future: state,
         builder: (context, snapshot) {
           if (snapshot.hasError) {
             return Center(child: Text('Ocorreu um erro inesperado'));
           }
 
           if (snapshot.hasData) {
-            return HomePageWidget(books: snapshot.data!, appContext: context);
+            return HomePageWidget(state: snapshot.data!, appContext: context);
           } else {
             return Center(child: CircularProgressIndicator());
           }

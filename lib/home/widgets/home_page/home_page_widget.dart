@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bookstore/home/widgets/books_on_sale_row/books_on_sale_widget.dart';
 import 'package:flutter_bookstore/home/widgets/home_search_bar/home_search_bar_widget.dart';
 import 'package:flutter_bookstore/home/widgets/most_sold_books_row/most_sold_books_row_widget.dart';
-import 'package:flutter_bookstore/shared/models/book_model.dart';
+import 'package:flutter_bookstore/shared/data/all_books_api.dart';
 
 class HomePageWidget extends StatelessWidget {
-  final List<BookModel> books;
+  final HomePageStateModel state;
   final BuildContext appContext;
 
   HomePageWidget({
     Key? key,
-    required this.books,
+    required this.state,
     required this.appContext,
   }) : super(key: key);
 
@@ -45,7 +45,7 @@ class HomePageWidget extends StatelessWidget {
               ),
               SizedBox(height: 8),
               MostSoldBooksWidgets(
-                booksList: books,
+                booksList: state.mostSoldBooks,
                 appContext: appContext,
               ),
               Text(
@@ -59,7 +59,7 @@ class HomePageWidget extends StatelessWidget {
               ),
               SizedBox(height: 8),
               BooksOnSaleWidget(
-                booksList: books,
+                booksList: state.booksOnSale,
                 appContext: appContext,
               ),
             ]),

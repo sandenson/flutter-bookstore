@@ -20,8 +20,14 @@ class _FormPageWidgetState extends State<FormPageWidget> {
             TextFormField(
               validator: (value) {
                 if (value!.isEmpty) return "Campo vazio";
-                if (!value.contains('@')) return "Email não válido";
-                if (!value.contains('.com')) return "Email não válido";
+                if (!value.contains('@')) return "Email inválido";
+                if ('@'.allMatches(value).length > 1) return "Email inválido";
+                if (value.indexOf('@') == 0) return "Email inválido";
+                if (value.endsWith('@')) return "Email inválido";
+                if (value.substring(
+                        value.indexOf('@') + 1, value.indexOf('@') + 2) ==
+                    '.') return "Email inválido";
+                if (!value.endsWith('.com')) return "Email inválido";
                 return null;
               },
               keyboardType: TextInputType.emailAddress,

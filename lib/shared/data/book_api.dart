@@ -3,20 +3,24 @@ import 'dart:convert';
 import 'package:flutter_bookstore/shared/models/book_model.dart';
 import 'package:http/http.dart' as http;
 
-class BooksApi {
-  Future<List<BookModel>> getBooks() async {
+class BookApi {
+  final int bookId;
+
+  BookApi({required this.bookId});
+
+  Future<BookModel> getBook() async {
+    // Future<BookModel> getBook() async {
     String url = 'flutter-bookstore.herokuapp.com';
-    String path = '/books';
+    String path = '/book/$bookId';
 
     final response = await http.get(Uri.https(url, path));
 
     if (response.statusCode == 200) {
-      final list = jsonDecode(response.body) as List;
-      print(list[0]['rating']);
+      final bookAsList = jsonDecode(response.body) as List;
 
-      final booksList = list.map((e) => BookModel.fromMap(e)).toList();
+      final book = bookAsList.map((e) => BookModel.fromMap(e)).toList();
 
-      return booksList;
+      return book[0];
     } else {
       throw new Exception('Ocorreu um erro');
     }

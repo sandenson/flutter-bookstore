@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bookstore/data/all_books_api.dart';
 import 'package:flutter_bookstore/favorites/widgets/favorites_page/favorites_page_widget.dart';
+import 'package:flutter_bookstore/shared/data/all_books_api.dart';
 import 'package:flutter_bookstore/shared/models/book_model.dart';
 import 'package:flutter_bookstore/shared/widgets/app_bar/app_bar_widget.dart';
 
@@ -15,7 +15,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
   @override
   void initState() {
     super.initState();
-    booksList = BooksApi().getBooks();
+    booksList = BooksApi().getBooksByList("favorites");
 
     booksList.then((value) => print(value[0]));
   }
