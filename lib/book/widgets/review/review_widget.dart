@@ -12,6 +12,8 @@ class ReviewWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(review);
+
     return Container(
       alignment: Alignment.center,
       padding: EdgeInsets.symmetric(vertical: 8),

@@ -17,10 +17,6 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     listaBooks = AllBooksApi().getBooks();
-
-    print("a");
-    print(listaBooks);
-    listaBooks.then((value) => print(value[1].author));
   }
 
   @override

@@ -3,7 +3,12 @@ import 'package:flutter_bookstore/book/widgets/review/review_widget.dart';
 import 'package:flutter_bookstore/shared/models/review_model.dart';
 
 class ReviewsListWidget extends StatelessWidget {
-  const ReviewsListWidget({Key? key}) : super(key: key);
+  final List<ReviewModel> reviewsList;
+
+  const ReviewsListWidget({
+    Key? key,
+    required this.reviewsList,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -36,14 +41,24 @@ class ReviewsListWidget extends StatelessWidget {
               ),
             ),
           ),
-          ListView.builder(
-            physics: NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
-            itemCount: reviews.length,
-            itemBuilder: (context, i) {
-              return ReviewWidget(review: reviews[i]);
-            },
-          ),
+          reviewsList.length > 0
+              ? ListView.builder(
+                  physics: NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: reviewsList.length,
+                  itemBuilder: (context, i) {
+                    return ReviewWidget(review: reviewsList[i]);
+                  },
+                )
+              : Container(
+                  padding: EdgeInsets.symmetric(vertical: 10),
+                  child: Center(
+                      child: Text(
+                    "Nenhuma avaliação...",
+                    style: TextStyle(fontSize: 16, color: Colors.grey[500]),
+                  )),
+                ),
+          SizedBox(height: 20),
         ],
       ),
     );

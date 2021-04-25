@@ -80,7 +80,9 @@ class _BookPageWidgetState extends State<BookPageWidget> {
               ],
             ),
           ),
-          ReviewsListWidget(),
+          ReviewsListWidget(
+            reviewsList: widget.book.reviews,
+          ),
         ],
       ),
     );

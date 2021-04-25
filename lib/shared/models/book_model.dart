@@ -59,8 +59,8 @@ class BookModel {
       description: map['description'],
       price: double.parse(map['price']),
       year: map['year'],
-      rating: map['rating'],
-      nRatings: map['nRatings'],
+      rating: double.parse(map['rating']),
+      nRatings: map['nreviews'],
       reviews: List<ReviewModel>.from(
           map['reviews']?.map((x) => ReviewModel.fromMap(x))),
     );

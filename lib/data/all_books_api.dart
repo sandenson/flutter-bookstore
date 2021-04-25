@@ -12,6 +12,8 @@ class AllBooksApi {
 
     if (response.statusCode == 200) {
       final list = jsonDecode(response.body) as List;
+      print(list[0]['rating']);
+
       final booksList = list.map((e) => BookModel.fromMap(e)).toList();
 
       return booksList;

@@ -71,7 +71,7 @@ class BookInfoWidget extends StatelessWidget {
                       child: StarDisplayWidget(value: rating),
                     ),
                     Text(
-                        rating.toString() +
+                        rating.toStringAsFixed(2) +
                             " de 5 estrelas (" +
                             nRatings.toString() +
                             " avaliações)",
