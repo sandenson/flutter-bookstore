@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter_bookstore/shared/models/book_model.dart';
 import 'package:http/http.dart' as http;
 
-class AllBooksApi {
+class BooksApi {
   Future<List<BookModel>> getBooks() async {
     String url = 'flutter-bookstore.herokuapp.com';
     String path = '/books';

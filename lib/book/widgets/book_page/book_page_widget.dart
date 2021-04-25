@@ -4,7 +4,7 @@ import 'package:flutter_bookstore/book/widgets/buttons_row/buttons_row_widget.da
 import 'package:flutter_bookstore/book/widgets/reviews_list/reviews_list_widget.dart';
 import 'package:flutter_bookstore/shared/models/book_model.dart';
 
-class BookPageWidget extends StatefulWidget {
+class BookPageWidget extends StatelessWidget {
   final BookModel book;
 
   BookPageWidget({
@@ -13,11 +13,6 @@ class BookPageWidget extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _BookPageWidgetState createState() => _BookPageWidgetState();
-}
-
-class _BookPageWidgetState extends State<BookPageWidget> {
-  @override
   Widget build(BuildContext context) {
     return Container(
       child: ListView(
@@ -25,12 +20,12 @@ class _BookPageWidgetState extends State<BookPageWidget> {
         shrinkWrap: true,
         children: [
           BookInfoWidget(
-            image: widget.book.imageUrl,
-            type: widget.book.type,
-            title: widget.book.title,
-            author: widget.book.author,
-            rating: widget.book.rating,
-            nRatings: widget.book.nRatings,
+            image: book.imageUrl,
+            type: book.type,
+            title: book.title,
+            author: book.author,
+            rating: book.rating,
+            nRatings: book.nRatings,
           ),
           Padding(
             padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
@@ -40,7 +35,7 @@ class _BookPageWidgetState extends State<BookPageWidget> {
             children: [
               Expanded(
                 child: Text(
-                  widget.book.description,
+                  book.description,
                   textAlign: TextAlign.justify,
                 ),
               ),
@@ -53,8 +48,8 @@ class _BookPageWidgetState extends State<BookPageWidget> {
               children: [
                 Text(
                   "Preço: R\$ " +
-                      widget.book.price.toString().replaceFirst(RegExp('.'),
-                          ',', widget.book.price.toString().length - 3),
+                      book.price.toString().replaceFirst(
+                          RegExp('.'), ',', book.price.toString().length - 3),
                   style: TextStyle(
                     fontSize: 24,
                     color: Colors.grey[700],
@@ -81,7 +76,7 @@ class _BookPageWidgetState extends State<BookPageWidget> {
             ),
           ),
           ReviewsListWidget(
-            reviewsList: widget.book.reviews,
+            reviewsList: book.reviews,
           ),
         ],
       ),

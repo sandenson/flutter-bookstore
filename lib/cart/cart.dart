@@ -1,8 +1,7 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bookstore/cart/widgets/cart/cart_widget.dart';
-import 'package:flutter_bookstore/favorites/favorites.dart';
+import 'package:flutter_bookstore/data/all_books_api.dart';
+import 'package:flutter_bookstore/shared/models/book_model.dart';
 import 'package:flutter_bookstore/shared/widgets/app_bar/app_bar_widget.dart';
 
 class CartPage extends StatefulWidget {
@@ -11,45 +10,33 @@ class CartPage extends StatefulWidget {
 }
 
 class _CartPageState extends State<CartPage> {
+  late Future<List<BookModel>> booksList;
+
+  @override
+  void initState() {
+    super.initState();
+    booksList = BooksApi().getBooks();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBarWidget(cart: true, appContext: context),
       body: SafeArea(
-        child: CartWidget(),
-      ),
-    );
-  }
+        child: FutureBuilder<List<BookModel>>(
+          future: booksList,
+          builder: (context, snapshot) {
+            if (snapshot.hasError) {
+              return Center(child: Text('Ocorreu um erro inesperado'));
+            }
 
-  AppBar buildAppBar() {
-    return AppBar(
-      backgroundColor: Color(0xFF00bdb1),
-      actions: [
-        IconButton(
-          icon: Icon(
-            Icons.favorite_outline_rounded,
-            color: Colors.white,
-            size: 27,
-          ),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => FavoritesPage()),
-            );
+            if (snapshot.hasData) {
+              return CartWidget(booksList: snapshot.data!);
+            } else {
+              return Center(child: CircularProgressIndicator());
+            }
           },
         ),
-        IconButton(
-          onPressed: () {},
-          icon: Icon(
-            Icons.shopping_cart_rounded,
-            color: Colors.white,
-            size: 27,
-          ),
-        ),
-      ],
-      centerTitle: true,
-      title: Text(
-        'BibliOnline',
       ),
     );
   }

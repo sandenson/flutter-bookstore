@@ -6,13 +6,47 @@ import 'package:flutter_bookstore/cart/widgets/search_field/search_field_widget.
 import 'package:flutter_bookstore/cart/widgets/total/total_widget.dart';
 import 'package:flutter_bookstore/shared/models/book_model.dart';
 
-class CartWidget extends StatefulWidget {
+class CartWidget extends StatelessWidget {
+  final List<BookModel> booksList;
+
   CartWidget({
     Key? key,
+    required this.booksList,
   }) : super(key: key);
 
   @override
-  _CartWidgetState createState() => _CartWidgetState();
+  Widget build(BuildContext context) {
+    return Container(
+      child: Column(
+        children: [
+          SearchFieldWidget(),
+          ListView(
+            shrinkWrap: true,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(
+                    top: 30, left: 20, right: 20, bottom: 20),
+                child: Column(
+                  children: [
+                    CartSizeWidget(cartSize: booksList.length),
+                    ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: booksList.length,
+                      itemBuilder: (context, index) =>
+                          BookCartInfoWidget(book: booksList[index]),
+                      scrollDirection: Axis.vertical,
+                    ),
+                    TotalWidget(books: booksList),
+                    CheckOutButtonWidget(),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
 }
 
 List<BookModel> books = [
@@ -46,39 +80,3 @@ List<BookModel> books = [
     reviews: [],
   ),
 ];
-
-class _CartWidgetState extends State<CartWidget> {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: [
-          SearchFieldWidget(),
-          ListView(
-            shrinkWrap: true,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(
-                    top: 30, left: 20, right: 20, bottom: 20),
-                child: Column(
-                  children: [
-                    CartSizeWidget(cartSize: 2),
-                    ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: books.length,
-                      itemBuilder: (context, index) =>
-                          BookCartInfoWidget(book: books[index]),
-                      scrollDirection: Axis.vertical,
-                    ),
-                    TotalWidget(books: books),
-                    CheckOutButtonWidget(),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-}

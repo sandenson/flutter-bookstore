@@ -11,12 +11,12 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  late Future<List<BookModel>> listaBooks;
+  late Future<List<BookModel>> booksList;
 
   @override
   void initState() {
     super.initState();
-    listaBooks = AllBooksApi().getBooks();
+    booksList = BooksApi().getBooks();
   }
 
   @override
@@ -24,18 +24,19 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBarWidget(home: true, appContext: context),
       body: FutureBuilder<List<BookModel>>(
-          future: listaBooks,
-          builder: (context, snapshot) {
-            if (snapshot.hasError) {
-              return Center(child: Text('Ocorreu um erro inesperado'));
-            }
+        future: booksList,
+        builder: (context, snapshot) {
+          if (snapshot.hasError) {
+            return Center(child: Text('Ocorreu um erro inesperado'));
+          }
 
-            if (snapshot.hasData) {
-              return HomePageWidget(books: snapshot.data!, appContext: context);
-            } else {
-              return Center(child: CircularProgressIndicator());
-            }
-          }),
+          if (snapshot.hasData) {
+            return HomePageWidget(books: snapshot.data!, appContext: context);
+          } else {
+            return Center(child: CircularProgressIndicator());
+          }
+        },
+      ),
       drawer: MenuDrawer(),
     );
   }
