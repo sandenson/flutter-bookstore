@@ -12,6 +12,8 @@ class BookModel {
   final String description;
   final double price;
   final int year;
+  final double rating;
+  final int nRatings;
   final List<ReviewModel> reviews;
 
   BookModel({
@@ -24,20 +26,10 @@ class BookModel {
     required this.price,
     required this.year,
     required this.language,
+    required this.rating,
+    required this.nRatings,
     required this.reviews,
   });
-
-  // BookModel.fromJson(Map<String, dynamic> json) {
-  //   imageUrl = json['imageUrl'];
-  //   title = json['title'];
-  //   author = json['author'];
-  //   description = json['description'];
-  //   type = json['type'];
-  //   price = json['price'].toDouble();
-  //   year = json['year'];
-  //   language = json['language'];
-  //   reviews = json['reviews'];
-  // }
 
   Map<String, dynamic> toMap() {
     return {
@@ -50,6 +42,8 @@ class BookModel {
       'description': description,
       'price': price,
       'year': year,
+      'rating': rating,
+      'nRatings': nRatings,
       'reviews': reviews.map((x) => x.toMap()).toList(),
     };
   }
@@ -65,6 +59,8 @@ class BookModel {
       description: map['description'],
       price: double.parse(map['price']),
       year: map['year'],
+      rating: map['rating'],
+      nRatings: map['nRatings'],
       reviews: List<ReviewModel>.from(
           map['reviews']?.map((x) => ReviewModel.fromMap(x))),
     );

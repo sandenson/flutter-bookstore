@@ -6,14 +6,10 @@ import 'package:flutter_bookstore/shared/models/book_model.dart';
 
 class BookPageWidget extends StatefulWidget {
   final BookModel book;
-  final double rating;
-  final int nRatings;
 
   BookPageWidget({
     Key? key,
     required this.book,
-    required this.rating,
-    required this.nRatings,
   }) : super(key: key);
 
   @override
@@ -33,8 +29,8 @@ class _BookPageWidgetState extends State<BookPageWidget> {
             type: widget.book.type,
             title: widget.book.title,
             author: widget.book.author,
-            rating: widget.rating,
-            nRatings: widget.nRatings,
+            rating: widget.book.rating,
+            nRatings: widget.book.nRatings,
           ),
           Padding(
             padding: EdgeInsets.fromLTRB(0, 10, 0, 10),

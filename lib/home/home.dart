@@ -3,7 +3,7 @@ import 'package:flutter_bookstore/home/widgets/home_page/home_page_widget.dart';
 import 'package:flutter_bookstore/shared/models/book_model.dart';
 import 'package:flutter_bookstore/shared/widgets/app_bar/app_bar_widget.dart';
 import '../shared/widgets/menu_drawer/menu_drawer_widget.dart';
-import 'package:flutter_bookstore/data/book_api.dart';
+import 'package:flutter_bookstore/data/all_books_api.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -16,7 +16,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    listaBooks = BookApi().getBooks();
+    listaBooks = AllBooksApi().getBooks();
 
     print("a");
     print(listaBooks);
