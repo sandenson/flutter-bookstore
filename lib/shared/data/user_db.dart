@@ -22,11 +22,11 @@ class UsersDB {
 
   _onCreate(Database db, int version) async {
     String sql =
-        'CREATE TABLE users (id INTEGER PRIMARY KEY, nome varchar(100) NOT NULL, email varchar(100) NOT NULL, senha varchar(10) NOT NULL);';
+        'CREATE TABLE users (id INTEGER PRIMARY KEY, name varchar(100) NOT NULL, email varchar(100) NOT NULL, password varchar(10) NOT NULL);';
     await db.execute(sql);
 
     sql =
-        "INSERT INTO users (id, nome, email, senha) VALUES (1, 'Jorge', 'jorge@gmail.com', '123456');";
+        "INSERT INTO users (id, name, email, password) VALUES (1, 'Jorge', 'jorge@gmail.com', '123456');";
     await db.execute(sql);
   }
 }
