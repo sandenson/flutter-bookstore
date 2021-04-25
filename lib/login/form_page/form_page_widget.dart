@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bookstore/home/home.dart';
 import 'package:flutter_bookstore/shared/data/user_dao.dart';
 import 'package:flutter_bookstore/shared/models/user_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -10,6 +11,8 @@ class FormPageWidget extends StatefulWidget {
 
 class _FormPageWidgetState extends State<FormPageWidget> {
   final _formKey = GlobalKey<FormState>();
+  final _usernameController = TextEditingController();
+  final _passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -19,6 +22,7 @@ class _FormPageWidgetState extends State<FormPageWidget> {
         child: Column(
           children: <Widget>[
             TextFormField(
+              controller: _usernameController,
               validator: (value) {
                 if (value!.isEmpty) return "Campo vazio";
                 if (!value.contains('@')) return "Email inválido";
@@ -52,9 +56,10 @@ class _FormPageWidgetState extends State<FormPageWidget> {
               height: 10,
             ),
             TextFormField(
+              controller: _passwordController,
               validator: (value) {
                 if (value!.isEmpty) return "Campo vazio";
-                if (value.length < 8) return "Mínimo de 8 caracteres";
+                if (value.length < 6) return "Mínimo de 6 caracteres";
                 return null;
               },
               keyboardType: TextInputType.text,
@@ -93,30 +98,41 @@ class _FormPageWidgetState extends State<FormPageWidget> {
             ElevatedButton(
               child: Text("ENTRAR"),
               onPressed: () async {
-                List<UserModel> users = await UsersDao().loadUsers();
-
-                users.forEach((user) {});
-
-                final userModel = new UserModel(
-                    email: 'giorno@giovanna.com',
-                    name: 'Giogio',
-                    password: '123456789');
-
-                String userModelParsed = userModel.toJson();
-
                 if (_formKey.currentState!.validate()) {
-                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                    content: Text("Logging in..."),
-                    duration: Duration(seconds: 3),
-                  ));
+                  List<UserModel> users = await UsersDao().loadUsers();
+                  String userModelParsed = 'null';
 
-                  addStringToSF() async {
-                    SharedPreferences prefs =
-                        await SharedPreferences.getInstance();
-                    prefs.setString('user', userModelParsed);
+                  users.forEach((user) {
+                    if (_usernameController.text == user.email &&
+                        _passwordController.text == user.password) {
+                      userModelParsed = user.toJson();
+                    }
+                  });
+
+                  if (userModelParsed == 'null') {
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      content: Text("Burro..."),
+                      duration: Duration(seconds: 3),
+                    ));
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      content: Text("Logging in..."),
+                      duration: Duration(seconds: 3),
+                    ));
+
+                    addStringToSF() async {
+                      SharedPreferences prefs =
+                          await SharedPreferences.getInstance();
+                      prefs.setString('user', userModelParsed);
+                    }
+
+                    addStringToSF();
+
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (appContext) => HomePage()),
+                    );
                   }
-
-                  addStringToSF();
                 }
               },
               style: ButtonStyle(
