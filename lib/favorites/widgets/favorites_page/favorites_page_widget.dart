@@ -65,7 +65,8 @@ class _FavoritesPageWidgetState extends State<FavoritesPageWidget> {
             ),
           ),
           BookPageHeaderWidget(username: "Jorge", numberOfBooks: 1),
-          GridContainerWidget(books: bookList, appContext: context)
+          //IMPORTANTE
+          // GridContainerWidget(books: bookList, appContext: context)
         ],
       ),
     );

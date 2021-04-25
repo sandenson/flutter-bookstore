@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bookstore/shared/models/user_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -106,6 +104,8 @@ class _FormPageWidgetState extends State<FormPageWidget> {
                         await SharedPreferences.getInstance();
                     prefs.setString('user', userModelParsed);
                   }
+
+                  addStringToSF();
                 }
               },
               style: ButtonStyle(

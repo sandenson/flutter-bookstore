@@ -3,9 +3,7 @@ import 'package:flutter/material.dart';
 class StarDisplayWidget extends StatelessWidget {
   final double value;
 
-  const StarDisplayWidget({Key? key, this.value = 0})
-      : assert(value != null),
-        super(key: key);
+  const StarDisplayWidget({Key? key, this.value = 0}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Row(

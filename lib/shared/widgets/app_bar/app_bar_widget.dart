@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bookstore/cart/cart.dart';
-import 'package:flutter_bookstore/favorites/favorites.dart';
 import 'package:flutter_bookstore/shared/widgets/app_bar/back_button/back_button_widget.dart';
 import 'package:flutter_bookstore/shared/widgets/app_bar/navigate_to_cart_button/navigate_to_cart_button_widget.dart';
 import 'package:flutter_bookstore/shared/widgets/app_bar/navigate_to_favorites_button/navigate_to_favorites_button_widget.dart';

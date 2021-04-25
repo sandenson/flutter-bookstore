@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bookstore/cart/cart.dart';
-import 'package:flutter_bookstore/favorites/favorites.dart';
 
 class NavegateToCartButtonWidget extends StatelessWidget {
   final BuildContext appContext;

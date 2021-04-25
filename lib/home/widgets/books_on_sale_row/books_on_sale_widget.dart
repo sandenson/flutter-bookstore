@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bookstore/shared/models/temporary/simple_book_model.dart';
+import 'package:flutter_bookstore/shared/models/book_model.dart';
 import 'package:flutter_bookstore/shared/widgets/book_card/book_card_widget.dart';
 
 class BooksOnSaleWidget extends StatelessWidget {
-  final List<SimpleBookModel> booksList;
+  final List<BookModel> booksList;
   final BuildContext appContext;
 
   const BooksOnSaleWidget({

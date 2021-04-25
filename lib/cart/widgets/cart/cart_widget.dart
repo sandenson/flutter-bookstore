@@ -17,6 +17,7 @@ class CartWidget extends StatefulWidget {
 
 List<BookModel> books = [
   new BookModel(
+    id: 1,
     imageUrl: "https://avatars.githubusercontent.com/u/29125169?v=4",
     title: 'A Arte da Guerra',
     author: 'Sun Tzu',
@@ -25,8 +26,10 @@ List<BookModel> books = [
     price: 7.99,
     year: 2012,
     language: 'Português',
+    reviews: [],
   ),
   new BookModel(
+    id: 2,
     imageUrl: "https://avatars.githubusercontent.com/u/29125169?v=4",
     title: 'Dom Quixote - Livro Primeiro',
     author: 'Miguel de Cervantes',
@@ -36,6 +39,7 @@ List<BookModel> books = [
     price: 10,
     year: 205,
     language: 'Inglês',
+    reviews: [],
   ),
 ];
 

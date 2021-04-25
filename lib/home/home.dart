@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bookstore/cart/cart.dart';
-import 'package:flutter_bookstore/favorites/favorites.dart';
 import 'package:flutter_bookstore/home/widgets/home_page/home_page_widget.dart';
 import 'package:flutter_bookstore/shared/models/book_model.dart';
 import 'package:flutter_bookstore/shared/widgets/app_bar/app_bar_widget.dart';
@@ -18,62 +16,31 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    listaBooks = BookApi().carregarBooks();
+    listaBooks = BookApi().getBooks();
 
+    print("a");
     print(listaBooks);
+    listaBooks.then((value) => print(value[1].author));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBarWidget(home: true, appContext: context),
-      body: HomePageWidget(appContext: context),
+      body: FutureBuilder<List<BookModel>>(
+          future: listaBooks,
+          builder: (context, snapshot) {
+            if (snapshot.hasError) {
+              return Center(child: Text('Ocorreu um erro inesperado'));
+            }
+
+            if (snapshot.hasData) {
+              return HomePageWidget(books: snapshot.data!, appContext: context);
+            } else {
+              return Center(child: CircularProgressIndicator());
+            }
+          }),
       drawer: MenuDrawer(),
     );
   }
-}
-
-buildAppBar(BuildContext context) {
-  return AppBar(
-    backgroundColor: Colors.teal[300],
-    title: Align(
-      alignment: Alignment.center,
-      child: Text(
-        'BibliOnline',
-        style: TextStyle(
-          color: Colors.white,
-          fontWeight: FontWeight.bold,
-        ),
-      ),
-    ),
-    actions: [
-      // ignore: missing_required_param
-      IconButton(
-        icon: Icon(
-          Icons.favorite_border,
-          color: Colors.white,
-          size: 27,
-        ),
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => FavoritesPage()),
-          );
-        },
-      ),
-      IconButton(
-        icon: Icon(
-          Icons.shopping_cart,
-          color: Colors.white,
-          size: 27,
-        ),
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => CartPage()),
-          );
-        },
-      ),
-    ],
-  );
 }

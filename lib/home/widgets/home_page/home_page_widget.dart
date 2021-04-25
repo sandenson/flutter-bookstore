@@ -2,21 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bookstore/home/widgets/books_on_sale_row/books_on_sale_widget.dart';
 import 'package:flutter_bookstore/home/widgets/home_search_bar/home_search_bar_widget.dart';
 import 'package:flutter_bookstore/home/widgets/most_sold_books_row/most_sold_books_row_widget.dart';
+import 'package:flutter_bookstore/shared/models/book_model.dart';
 import 'package:flutter_bookstore/shared/models/temporary/simple_book_model.dart';
 
-class HomePageWidget extends StatefulWidget {
+class HomePageWidget extends StatelessWidget {
+  final List<BookModel> books;
   final BuildContext appContext;
 
   HomePageWidget({
     Key? key,
+    required this.books,
     required this.appContext,
   }) : super(key: key);
 
-  @override
-  _HomePageWidgetState createState() => _HomePageWidgetState();
-}
-
-class _HomePageWidgetState extends State<HomePageWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -48,8 +46,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               ),
               SizedBox(height: 8),
               MostSoldBooksWidgets(
-                booksList: mostSoldBooksList,
-                appContext: widget.appContext,
+                booksList: books,
+                appContext: appContext,
               ),
               Text(
                 'Ofertas da semana do Consumidor: Novas ofertas todos os dias',
@@ -62,8 +60,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               ),
               SizedBox(height: 8),
               BooksOnSaleWidget(
-                booksList: booksOnSaleList,
-                appContext: widget.appContext,
+                booksList: books,
+                appContext: appContext,
               ),
             ]),
           ),

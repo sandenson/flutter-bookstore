@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bookstore/book/book_page.dart';
-import 'package:flutter_bookstore/shared/models/temporary/simple_book_model.dart';
+import 'package:flutter_bookstore/shared/models/book_model.dart';
 
 class BookCardWidget extends StatelessWidget {
-  final SimpleBookModel book;
+  final BookModel book;
   final BuildContext appContext;
 
   const BookCardWidget({
@@ -20,7 +20,8 @@ class BookCardWidget extends StatelessWidget {
         onTap: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (appContext) => BookPage()),
+            MaterialPageRoute(
+                builder: (appContext) => BookPage(bookId: book.id)),
           );
         },
         child: Container(
@@ -29,7 +30,7 @@ class BookCardWidget extends StatelessWidget {
           ),
           child: Column(
             children: [
-              Image.network(book.image, height: 180, fit: BoxFit.fitHeight),
+              Image.network(book.imageUrl, height: 180, fit: BoxFit.fitHeight),
               Padding(
                 padding: EdgeInsets.all(10),
                 child: Text(
