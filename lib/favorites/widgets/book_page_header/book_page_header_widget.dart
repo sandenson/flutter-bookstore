@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 class BookPageHeaderWidget extends StatelessWidget {
-  final String username;
+  final String name;
   final int numberOfBooks;
 
   const BookPageHeaderWidget({
     Key? key,
-    required this.username,
+    required this.name,
     required this.numberOfBooks,
   }) : super(key: key);
 
@@ -33,7 +33,7 @@ class BookPageHeaderWidget extends StatelessWidget {
                       color: Colors.grey[600]),
                   children: [
                 TextSpan(
-                  text: username,
+                  text: name,
                   style: TextStyle(
                       fontSize: 16,
                       fontStyle: FontStyle.italic,

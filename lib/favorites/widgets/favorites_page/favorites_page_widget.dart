@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bookstore/favorites/widgets/book_page_header/book_page_header_widget.dart';
 import 'package:flutter_bookstore/favorites/widgets/grid_container/grid_container_widget.dart';
+import 'package:flutter_bookstore/shared/data/user_sf.dart';
 import 'package:flutter_bookstore/shared/models/book_model.dart';
 
-class FavoritesPageWidget extends StatelessWidget {
+class FavoritesPageWidget extends StatefulWidget {
   final List<BookModel> booksList;
   final BuildContext appContext;
 
@@ -12,6 +13,19 @@ class FavoritesPageWidget extends StatelessWidget {
     required this.booksList,
     required this.appContext,
   }) : super(key: key);
+
+  @override
+  _FavoritesPageWidgetState createState() => _FavoritesPageWidgetState();
+}
+
+class _FavoritesPageWidgetState extends State<FavoritesPageWidget> {
+  late Future<String> name;
+
+  @override
+  void initState() {
+    super.initState();
+    name = UserSF().getValuesSF();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,9 +48,24 @@ class FavoritesPageWidget extends StatelessWidget {
               ),
             ),
           ),
-          BookPageHeaderWidget(username: "Jorge", numberOfBooks: 1),
+          FutureBuilder<String>(
+            future: name,
+            builder: (context, snapshot) {
+              if (snapshot.hasError) {
+                return Center(child: Text('Ocorreu um erro inesperado'));
+              }
+
+              if (snapshot.hasData) {
+                return BookPageHeaderWidget(
+                    name: snapshot.data!,
+                    numberOfBooks: widget.booksList.length);
+              } else {
+                return Center(child: CircularProgressIndicator());
+              }
+            },
+          ),
           //IMPORTANTE
-          GridContainerWidget(books: booksList, appContext: context)
+          GridContainerWidget(books: widget.booksList, appContext: context)
         ],
       ),
     );

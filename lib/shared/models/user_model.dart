@@ -19,6 +19,14 @@ class UserModel {
     };
   }
 
+  factory UserModel.fromMap(Map<String, dynamic> map) {
+    return UserModel(
+      name: map['name'],
+      email: map['email'],
+      password: map['password'],
+    );
+  }
+
   String toJson() => json.encode(toMap());
 
   UserModel.fromJson(Map<String, dynamic> map) {

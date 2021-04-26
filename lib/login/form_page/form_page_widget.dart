@@ -105,13 +105,13 @@ class _FormPageWidgetState extends State<FormPageWidget> {
                   users.forEach((user) {
                     if (_usernameController.text == user.email &&
                         _passwordController.text == user.password) {
-                      userModelParsed = user.toJson();
+                      userModelParsed = "[" + user.toJson() + "]";
                     }
                   });
 
                   if (userModelParsed == 'null') {
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                      content: Text("Burro..."),
+                      content: Text("Credenciais inválidas."),
                       duration: Duration(seconds: 3),
                     ));
                   } else {

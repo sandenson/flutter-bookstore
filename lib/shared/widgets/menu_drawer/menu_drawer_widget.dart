@@ -3,11 +3,11 @@ import 'package:flutter_bookstore/login/login_page.dart';
 import 'package:flutter_bookstore/shared/widgets/menu_drawer/navigation_button/navigation_button_widget.dart';
 
 class MenuDrawer extends StatelessWidget {
-  final String username;
+  final String name;
 
   const MenuDrawer({
     Key? key,
-    this.username = '',
+    this.name = '',
   }) : super(key: key);
 
   @override
@@ -17,7 +17,7 @@ class MenuDrawer extends StatelessWidget {
         color: Color(0xFF00bdb1),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: this.username.isNotEmpty
+          children: this.name.isNotEmpty
               ? [
                   Padding(
                     padding: const EdgeInsets.only(
@@ -26,13 +26,38 @@ class MenuDrawer extends StatelessWidget {
                       right: 10,
                       bottom: 20,
                     ),
-                    child: Text(
-                      ('Olá ' + this.username).toUpperCase(),
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
+                    child: RichText(
+                      text: TextSpan(
+                        text: "Olá, ",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                        ),
+                        children: [
+                          TextSpan(
+                            text: name,
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                                fontSize: 20),
+                          ),
+                          TextSpan(
+                            text: ".",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
+                    // child: Text(
+                    //   ('Olá, ' + this.name).toUpperCase(),
+                    //   style: TextStyle(
+                    //     color: Colors.white,
+                    //     fontSize: 16,
+                    //   ),
+                    // ),
                   ),
                   NavigationButtonWidget(text: 'Minha lista'),
                   NavigationButtonWidget(text: 'Sair'),

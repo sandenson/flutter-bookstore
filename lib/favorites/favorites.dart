@@ -16,8 +16,6 @@ class _FavoritesPageState extends State<FavoritesPage> {
   void initState() {
     super.initState();
     booksList = BooksApi().getBooksByList("favorites");
-
-    booksList.then((value) => print(value[0]));
   }
 
   @override
@@ -36,7 +34,9 @@ class _FavoritesPageState extends State<FavoritesPage> {
 
           if (snapshot.hasData) {
             return FavoritesPageWidget(
-                booksList: snapshot.data!, appContext: context);
+              booksList: snapshot.data!,
+              appContext: context,
+            );
           } else {
             return Center(child: CircularProgressIndicator());
           }
@@ -44,4 +44,14 @@ class _FavoritesPageState extends State<FavoritesPage> {
       ),
     );
   }
+}
+
+class FavoritesPageState {
+  final List<BookModel> booksList;
+  final String name;
+
+  FavoritesPageState({
+    required this.booksList,
+    required this.name,
+  });
 }
