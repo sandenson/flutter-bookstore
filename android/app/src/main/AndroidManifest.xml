@@ -3,6 +3,10 @@
    <application
         android:label="pagina_livro"
         android:icon="@mipmap/ic_launcher">
+
+        <meta-data android:name="com.google.android.geo.API_KEY" 
+          android:value="AIzaSyBU5RVoMhYBljwWdNhDRKiRIEt-lsFBsxo" />
+        
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
