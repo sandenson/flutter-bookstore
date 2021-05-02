@@ -3,6 +3,7 @@ import 'package:flutter_bookstore/home/widgets/books_on_sale_row/books_on_sale_w
 import 'package:flutter_bookstore/home/widgets/home_search_bar/home_search_bar_widget.dart';
 import 'package:flutter_bookstore/home/widgets/most_sold_books_row/most_sold_books_row_widget.dart';
 import 'package:flutter_bookstore/shared/data/all_books_api.dart';
+import 'package:flutter_bookstore/shared/widgets/map/map_widget.dart';
 
 class HomePageWidget extends StatelessWidget {
   final HomePageStateModel state;
@@ -64,6 +65,7 @@ class HomePageWidget extends StatelessWidget {
               ),
             ]),
           ),
+          MapWidget(),
         ],
       ),
     );

@@ -25,6 +25,7 @@ dependencies:
   intl: ^0.17.0
   http:
   sqflite:
+  google_maps_flutter: ^2.0.3
 
   flutter:
     sdk: flutter
