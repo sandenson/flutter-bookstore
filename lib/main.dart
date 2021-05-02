@@ -6,7 +6,7 @@ void main() {
   runApp(
     MaterialApp(
       title: 'Flutter Library',
-      home: MapWidget(),
+      home: HomePage(),
       debugShowCheckedModeBanner: false,
     ),
   );

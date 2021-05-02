@@ -65,7 +65,9 @@ class HomePageWidget extends StatelessWidget {
               ),
             ]),
           ),
-          MapWidget(),
+          MapWidget(
+            height: 300,
+          ),
         ],
       ),
     );

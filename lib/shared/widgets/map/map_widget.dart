@@ -4,7 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class MapWidget extends StatefulWidget {
-  MapWidget({Key? key}) : super(key: key);
+  final int? height;
+  final int? width;
+
+  MapWidget({Key? key, this.height, this.width}) : super(key: key);
 
   @override
   _MapWidgetState createState() => _MapWidgetState();
@@ -20,14 +23,27 @@ class _MapWidgetState extends State<MapWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: GoogleMap(
-        mapType: MapType.hybrid,
-        initialCameraPosition: _kIFALCampusArapiraca,
-        onMapCreated: (GoogleMapController controller) {
-          _controller.complete(controller);
-        },
-      ),
+    return Stack(
+      children: [
+        SizedBox(
+          height: (widget.height != null
+              ? widget.height!.toDouble()
+              : MediaQuery.of(context).size.height),
+          width: (widget.width != null
+              ? widget.width!.toDouble()
+              : MediaQuery.of(context).size.width),
+          child: GoogleMap(
+            mapType: MapType.hybrid,
+            rotateGesturesEnabled: false,
+            scrollGesturesEnabled: false,
+            tiltGesturesEnabled: false,
+            initialCameraPosition: _kIFALCampusArapiraca,
+            onMapCreated: (GoogleMapController controller) {
+              _controller.complete(controller);
+            },
+          ),
+        ),
+      ],
     );
   }
 }
