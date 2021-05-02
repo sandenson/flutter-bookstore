@@ -15,7 +15,7 @@ class BooksOnSaleWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 250,
+      height: 270,
       child: ListView.builder(
         shrinkWrap: true,
         scrollDirection: Axis.horizontal,

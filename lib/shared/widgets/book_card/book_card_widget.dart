@@ -25,23 +25,21 @@ class BookCardWidget extends StatelessWidget {
           );
         },
         child: Container(
+          width: 150,
+          padding: EdgeInsets.all(8),
           decoration: BoxDecoration(
             color: Colors.white,
           ),
           child: Column(
             children: [
               Image.network(book.imageUrl, height: 180, fit: BoxFit.fitHeight),
-              Padding(
-                padding: EdgeInsets.all(10),
-                child: Text(
-                  book.title,
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
+              SizedBox(height: 10),
+              Text(
+                book.title,
+                style: TextStyle(fontWeight: FontWeight.bold),
               ),
-              Padding(
-                padding: EdgeInsets.only(bottom: 4),
-                child: Text(book.author),
-              ),
+              SizedBox(height: 4),
+              Text(book.author),
             ],
           ),
         ),

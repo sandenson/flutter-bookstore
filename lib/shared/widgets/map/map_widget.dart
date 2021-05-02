@@ -23,27 +23,30 @@ class _MapWidgetState extends State<MapWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        SizedBox(
-          height: (widget.height != null
-              ? widget.height!.toDouble()
-              : MediaQuery.of(context).size.height),
-          width: (widget.width != null
-              ? widget.width!.toDouble()
-              : MediaQuery.of(context).size.width),
-          child: GoogleMap(
-            mapType: MapType.hybrid,
-            rotateGesturesEnabled: false,
-            scrollGesturesEnabled: false,
-            tiltGesturesEnabled: false,
-            initialCameraPosition: _kIFALCampusArapiraca,
-            onMapCreated: (GoogleMapController controller) {
-              _controller.complete(controller);
-            },
+    return Padding(
+      padding: const EdgeInsets.all(16),
+      child: Stack(
+        children: [
+          SizedBox(
+            height: (widget.height != null
+                ? widget.height!.toDouble()
+                : MediaQuery.of(context).size.height),
+            width: (widget.width != null
+                ? widget.width!.toDouble()
+                : MediaQuery.of(context).size.width),
+            child: GoogleMap(
+              mapType: MapType.hybrid,
+              rotateGesturesEnabled: false,
+              scrollGesturesEnabled: false,
+              tiltGesturesEnabled: false,
+              initialCameraPosition: _kIFALCampusArapiraca,
+              onMapCreated: (GoogleMapController controller) {
+                _controller.complete(controller);
+              },
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

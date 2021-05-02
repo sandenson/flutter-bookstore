@@ -34,37 +34,51 @@ class HomePageWidget extends StatelessWidget {
           ),
           Padding(
             padding: EdgeInsets.fromLTRB(0, 50, 0, 50), // EdgeInsets.all(7),
-            child: Column(children: [
-              Text(
-                'Conheça os livros mais vendidos da BibliOnline:',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontStyle: FontStyle.italic,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Conheça os livros mais vendidos da BibliOnline:',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontStyle: FontStyle.italic,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
                 ),
-              ),
-              SizedBox(height: 8),
-              MostSoldBooksWidgets(
-                booksList: state.mostSoldBooks,
-                appContext: appContext,
-              ),
-              Text(
-                'Ofertas da semana do Consumidor: Novas ofertas todos os dias',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontStyle: FontStyle.italic,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16,
+                SizedBox(height: 8),
+                MostSoldBooksWidgets(
+                  booksList: state.mostSoldBooks,
+                  appContext: appContext,
                 ),
-              ),
-              SizedBox(height: 8),
-              BooksOnSaleWidget(
-                booksList: state.booksOnSale,
-                appContext: appContext,
-              ),
-            ]),
+                Text(
+                  'Ofertas da semana do Consumidor: Novas ofertas todos os dias',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontStyle: FontStyle.italic,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
+                  // textAlign: TextAlignVertical.center,
+                ),
+                SizedBox(height: 8),
+                BooksOnSaleWidget(
+                  booksList: state.booksOnSale,
+                  appContext: appContext,
+                ),
+              ],
+            ),
           ),
+          Center(
+            child: Text(
+              "Encontre-nos aqui:",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+              ),
+            ),
+          ),
+          SizedBox(height: 8),
           MapWidget(
             height: 300,
           ),
