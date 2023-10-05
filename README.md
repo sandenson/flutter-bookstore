@@ -1,3 +1,3 @@
-# flutter_bookstore
+## flutter bookstore
 
-Uma cópia descarada do [estantevirtual.com.br](estantevirtual.com.br) feita em versão mobile para um projeto escolar.
+Cópia do [Estante Virtual](estantevirtual.com.br) em Flutter para um projeto escolar.
